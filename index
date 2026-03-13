@@ -1,0 +1,612 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="KeyVox - IA, automatización, marketing digital y sistemas de crecimiento para empresas y comercios." />
+
+  <link rel="icon" type="image/png" href="keyvoxlogo.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="keyvoxlogo.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="keyvoxlogo.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="keyvoxlogo.png">
+
+  <title>KeyVox | IA, Automatización y Marketing para Empresas</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Intro con video -->
+  <div id="gifIntro">
+    <video autoplay muted playsinline>
+      <source src="cybor.mp4" type="video/mp4">
+    </video>
+  </div>
+
+  <div class="wrap">
+    <div class="float f1"></div>
+    <div class="float f2"></div>
+    <div class="float f3"></div>
+
+    <!-- NAV -->
+    <nav class="nav" aria-label="Navegación principal">
+      <div class="nav-inner">
+        <div class="brand">
+          <a href="#top" style="display:flex;align-items:center;gap:10px;">
+            <img src="keyvoxlogo.png" alt="KeyVox logo" style="height:90px;width:auto;">
+          </a>
+        </div>
+
+        <div class="nav-links">
+          <a href="#servicios">Servicios</a>
+          <a href="#ia">IA para Empresas</a>
+          <a href="#metodo">Método</a>
+          <a href="#planes">Planes</a>
+          <a href="#contacto">Contacto</a>
+        </div>
+
+        <div style="display:flex; gap:10px;">
+          <a class="btn btn-ghost" href="#servicios">Ver servicios</a>
+          <a class="btn btn-primary" href="#contacto">Agendar diagnóstico</a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- HERO -->
+    <header class="hero hero-impact" id="top">
+      <div class="hero-copy">
+        <div class="badge">
+          <span class="dot"></span>
+          IA + Automatización + Marketing + Conversión
+        </div>
+
+        <h1>
+          Las empresas que integren
+          <span class="grad">IA primero</span>
+          <br>
+          se quedarán con el mercado
+        </h1>
+
+        <p class="lead hero-lead-strong">
+          La inteligencia artificial ya está redefiniendo ventas, atención al cliente, contenido, automatización
+          y productividad. En KeyVox ayudamos a empresas y comercios a implementar sistemas con IA para vender más,
+          responder más rápido y operar con ventaja real.
+        </p>
+
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#contacto">Quiero implementar IA en mi negocio</a>
+          <a class="btn btn-ghost" href="#ia">Explorar servicios de IA</a>
+        </div>
+
+        <div class="hero-meta">
+          <span class="pill">✅ Agentes de IA</span>
+          <span class="pill">✅ Automatización comercial</span>
+          <span class="pill">✅ IA para WhatsApp</span>
+          <span class="pill">✅ Sistemas que escalan ventas</span>
+        </div>
+      </div>
+
+      <div class="hero-media">
+        <div class="hero-video-card">
+          <div class="hero-video-top">
+            <div>
+              <div class="eyebrow">VIDEO PRESENTACIÓN</div>
+              <div class="video-title">KeyVox AI Growth System</div>
+            </div>
+            <span class="tag tag-live">ALTO IMPACTO</span>
+          </div>
+
+          <div class="hero-video-frame">
+            <video controls autoplay muted loop playsinline poster="keyvoxlogo.png">
+              <source src="cybor.mp4" type="video/mp4">
+              Tu navegador no soporta video HTML5.
+            </video>
+          </div>
+
+          <div class="hero-video-bottom">
+            <div class="mini-stat">
+              <b>24/7</b>
+              <span>Atención automática</span>
+            </div>
+            <div class="mini-stat">
+              <b>+Leads</b>
+              <span>Captación y filtrado</span>
+            </div>
+            <div class="mini-stat">
+              <b>+Ventas</b>
+              <span>Seguimiento inteligente</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- BLOQUE DE IMPACTO -->
+    <section class="impact-band">
+      <div class="impact-band-inner">
+        <div class="impact-item">
+          <strong>Atención inmediata</strong>
+          <span>Respondé consultas incluso mientras dormís.</span>
+        </div>
+        <div class="impact-item">
+          <strong>Automatización real</strong>
+          <span>Menos tareas repetitivas, más foco en cerrar ventas.</span>
+        </div>
+        <div class="impact-item">
+          <strong>Ventaja competitiva</strong>
+          <span>Tu empresa operando como una organización de otro nivel.</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICIOS GENERALES -->
+    <section id="servicios">
+      <div class="section-title">
+        <div>
+          <h2>Servicios estratégicos</h2>
+          <p>Construimos sistemas comerciales y operativos para empresas que quieren crecer, automatizar y posicionarse con tecnología de alto impacto.</p>
+        </div>
+      </div>
+
+      <div class="grid grid-3">
+        <article class="card">
+          <div class="icon">🌐</div>
+          <h3>Web profesional & Landing Pages</h3>
+          <p>Diseño y desarrollo de webs enfocadas en conversión, autoridad de marca y captación de oportunidades comerciales.</p>
+          <div class="tagrow">
+            <span class="tag">HTML / WordPress</span>
+            <span class="tag">Conversión</span>
+            <span class="tag">SEO local</span>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="icon">📣</div>
+          <h3>Meta Ads & campañas de performance</h3>
+          <p>Campañas orientadas a resultados: leads, WhatsApp, remarketing, anuncios creativos y escalamiento comercial.</p>
+          <div class="tagrow">
+            <span class="tag">Meta Ads</span>
+            <span class="tag">Retargeting</span>
+            <span class="tag">Performance</span>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="icon">🎬</div>
+          <h3>Creativos de alto impacto</h3>
+          <p>Videos, piezas visuales, hooks, ediciones y contenido pensado para detener el scroll y activar la intención de compra.</p>
+          <div class="tagrow">
+            <span class="tag">Reels</span>
+            <span class="tag">UGC</span>
+            <span class="tag">Branding</span>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="icon">💬</div>
+          <h3>WhatsApp comercial & seguimiento</h3>
+          <p>Flujos de mensajes, respuestas rápidas, cierre comercial, automatizaciones y derivación inteligente de prospectos.</p>
+          <div class="tagrow">
+            <span class="tag">WhatsApp</span>
+            <span class="tag">Cierres</span>
+            <span class="tag">Embudo</span>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="icon">🗂️</div>
+          <h3>CRM, base de datos y reactivación</h3>
+          <p>Organizamos contactos, clientes, historial y segmentación para campañas, promociones y seguimiento efectivo.</p>
+          <div class="tagrow">
+            <span class="tag">CRM</span>
+            <span class="tag">Listas</span>
+            <span class="tag">Recompra</span>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="icon">⚙️</div>
+          <h3>Automatización de procesos</h3>
+          <p>Diseñamos flujos para ahorrar tiempo, eliminar tareas repetitivas y darle velocidad operativa a tu empresa.</p>
+          <div class="tagrow">
+            <span class="tag">Automations</span>
+            <span class="tag">Procesos</span>
+            <span class="tag">Productividad</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- IA PARA EMPRESAS -->
+    <section id="ia">
+      <div class="section-title">
+        <div>
+          <h2>Servicios de IA para empresas y comercios</h2>
+          <p>Implementamos soluciones con inteligencia artificial aplicadas a ventas, atención al cliente, marketing, análisis y automatización operativa.</p>
+        </div>
+      </div>
+
+      <div class="grid grid-3">
+        <article class="card">
+          <div class="icon">🤖</div>
+          <h3>Agentes de IA para WhatsApp</h3>
+          <p>Agentes conversacionales entrenados para responder consultas, filtrar clientes, enviar catálogos y derivar oportunidades.</p>
+          <div class="tagrow">
+            <span class="tag">24/7</span>
+            <span class="tag">Leads</span>
+            <span class="tag">Ventas</span>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="icon">💻</div>
+          <h3>Chatbots IA para sitio web</h3>
+          <p>Asistentes inteligentes integrados en tu web para atender visitantes, resolver dudas y convertir tráfico en consultas reales.</p>
+          <div class="tagrow">
+            <span class="tag">Web Chat</span>
+            <span class="tag">Soporte</span>
+            <span class="tag">Conversión</span>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="icon">📞</div>
+          <h3>Agentes de voz con IA</h3>
+          <p>Sistemas de voz capaces de atender llamadas, tomar datos, confirmar turnos y ejecutar tareas repetitivas sin intervención humana.</p>
+          <div class="tagrow">
+            <span class="tag">Llamadas</span>
+            <span class="tag">Turnos</span>
+            <span class="tag">Operación</span>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="icon">📊</div>
+          <h3>Análisis de datos con IA</h3>
+          <p>Convertimos datos dispersos en reportes claros, patrones comerciales e información útil para tomar mejores decisiones.</p>
+          <div class="tagrow">
+            <span class="tag">Dashboards</span>
+            <span class="tag">Insights</span>
+            <span class="tag">Reportes</span>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="icon">✍️</div>
+          <h3>Creación de contenido con IA</h3>
+          <p>Generación asistida de copies, ideas, anuncios, guiones, descripciones y material de venta alineado con tu marca.</p>
+          <div class="tagrow">
+            <span class="tag">Copy</span>
+            <span class="tag">Anuncios</span>
+            <span class="tag">Escala</span>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="icon">🧠</div>
+          <h3>Asistentes IA personalizados</h3>
+          <p>Desarrollamos asistentes entrenados con la información de tu negocio para soporte interno, consultas operativas o ventas.</p>
+          <div class="tagrow">
+            <span class="tag">Custom AI</span>
+            <span class="tag">Base interna</span>
+            <span class="tag">Eficiencia</span>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="icon">📧</div>
+          <h3>Automatización de emails y seguimiento</h3>
+          <p>Secuencias inteligentes para nutrir prospectos, recuperar clientes fríos y mejorar el seguimiento comercial.</p>
+          <div class="tagrow">
+            <span class="tag">Email</span>
+            <span class="tag">Follow-up</span>
+            <span class="tag">Reactivación</span>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="icon">📁</div>
+          <h3>Clasificación inteligente de documentos</h3>
+          <p>Organización automática de archivos, formularios, pedidos, facturas y documentación relevante para el negocio.</p>
+          <div class="tagrow">
+            <span class="tag">Docs</span>
+            <span class="tag">Orden</span>
+            <span class="tag">Ahorro de tiempo</span>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="icon">🛒</div>
+          <h3>IA para ecommerce y comercios</h3>
+          <p>Automatización de respuestas, recomendaciones de productos, carritos, seguimiento de clientes y experiencia de compra.</p>
+          <div class="tagrow">
+            <span class="tag">Ecommerce</span>
+            <span class="tag">Ventas</span>
+            <span class="tag">Cliente</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- METODO -->
+    <section id="metodo">
+      <div class="section-title">
+        <div>
+          <h2>Método KeyVox</h2>
+          <p>Un sistema para pasar de presencia digital a operación inteligente con IA, automatización y marketing orientado a resultados.</p>
+        </div>
+      </div>
+
+      <div class="grid grid-2">
+        <div class="card steps">
+          <div class="step">
+            <h4>Diagnóstico del negocio</h4>
+            <p>Detectamos cuellos de botella en ventas, atención, marketing, seguimiento y operación diaria.</p>
+          </div>
+
+          <div class="step" style="margin-top:14px;">
+            <h4>Diseño del sistema</h4>
+            <p>Definimos web, automatizaciones, agentes de IA, CRM, embudo comercial y arquitectura de conversión.</p>
+          </div>
+
+          <div class="step" style="margin-top:14px;">
+            <h4>Implementación</h4>
+            <p>Integramos herramientas, flujos, mensajes y activos digitales para que tu negocio funcione con más inteligencia.</p>
+          </div>
+
+          <div class="step" style="margin-top:14px;">
+            <h4>Optimización continua</h4>
+            <p>Medimos, mejoramos y escalamos con foco en productividad, velocidad de respuesta y resultados comerciales.</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="icon">🚀</div>
+          <h3>Lo que cambia cuando implementás IA</h3>
+          <p>No se trata de “verse moderno”. Se trata de operar mejor que tu competencia.</p>
+          <ul class="list">
+            <li><span class="check">✓</span> Respuesta más rápida a prospectos</li>
+            <li><span class="check">✓</span> Menos pérdida de oportunidades</li>
+            <li><span class="check">✓</span> Más orden comercial y operativo</li>
+            <li><span class="check">✓</span> Menos carga manual en tareas repetitivas</li>
+            <li><span class="check">✓</span> Mayor capacidad de escala</li>
+          </ul>
+
+          <div class="hero-actions" style="margin-top:14px;">
+            <a class="btn btn-primary" href="#contacto">Solicitar diagnóstico</a>
+            <a class="btn btn-ghost" href="#planes">Ver planes</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PLANES -->
+    <section id="planes">
+      <div class="section-title">
+        <div>
+          <h2>Planes de implementación</h2>
+          <p>Desde soluciones iniciales hasta sistemas completos con agentes de IA, automatización y crecimiento comercial.</p>
+        </div>
+      </div>
+
+      <div class="grid grid-3">
+        <div class="card price">
+          <div class="top">
+            <div>
+              <b>IA Start</b><br>
+              <small>Ideal para dar el primer paso</small>
+            </div>
+            <span class="tag">Inicial</span>
+          </div>
+
+          <ul class="list">
+            <li><span class="check">✓</span> Diagnóstico de negocio</li>
+            <li><span class="check">✓</span> Setup base de automatización</li>
+            <li><span class="check">✓</span> Optimización de presencia digital</li>
+            <li><span class="check">✓</span> Flujo simple de captación</li>
+          </ul>
+
+          <div class="hero-actions" style="margin-top:14px;">
+            <a class="btn btn-primary" href="#contacto" onclick="prefillPlan('IA Start')">Quiero este plan</a>
+          </div>
+        </div>
+
+        <div class="card price">
+          <div class="top">
+            <div>
+              <b>IA Business</b><br>
+              <small>Automatización comercial inteligente</small>
+            </div>
+            <span class="tag" style="border-color:rgba(168,85,247,.25);">Más elegido</span>
+          </div>
+
+          <ul class="list">
+            <li><span class="check">✓</span> Web o landing orientada a conversión</li>
+            <li><span class="check">✓</span> WhatsApp comercial optimizado</li>
+            <li><span class="check">✓</span> CRM + seguimiento</li>
+            <li><span class="check">✓</span> Automatizaciones clave</li>
+            <li><span class="check">✓</span> Estrategia de IA aplicada al negocio</li>
+          </ul>
+
+          <div class="hero-actions" style="margin-top:14px;">
+            <a class="btn btn-primary" href="#contacto" onclick="prefillPlan('IA Business')">Quiero este plan</a>
+          </div>
+        </div>
+
+        <div class="card price">
+          <div class="top">
+            <div>
+              <b>IA Enterprise</b><br>
+              <small>Sistema avanzado y personalizado</small>
+            </div>
+            <span class="tag">Premium</span>
+          </div>
+
+          <ul class="list">
+            <li><span class="check">✓</span> Agentes de IA personalizados</li>
+            <li><span class="check">✓</span> Automatización multiárea</li>
+            <li><span class="check">✓</span> Integración comercial y operativa</li>
+            <li><span class="check">✓</span> Dashboards y métricas</li>
+            <li><span class="check">✓</span> Acompañamiento estratégico</li>
+          </ul>
+
+          <div class="hero-actions" style="margin-top:14px;">
+            <a class="btn btn-primary" href="#contacto" onclick="prefillPlan('IA Enterprise')">Quiero este plan</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACTO -->
+    <section id="contacto">
+      <div class="section-title">
+        <div>
+          <h2>Agendá tu diagnóstico</h2>
+          <p>Contame qué tipo de empresa o comercio tenés y te propongo una ruta concreta para implementar IA y acelerar resultados.</p>
+        </div>
+      </div>
+
+      <div class="contact">
+        <div class="card">
+          <form class="form" id="leadForm">
+            <div class="grid grid-2">
+              <div>
+                <label for="nombre" class="form-label">Nombre</label>
+                <input id="nombre" name="nombre" placeholder="Tu nombre" required>
+              </div>
+              <div>
+                <label for="empresa" class="form-label">Empresa</label>
+                <input id="empresa" name="empresa" placeholder="Tu empresa o comercio">
+              </div>
+            </div>
+
+            <div class="grid grid-2">
+              <div>
+                <label for="servicio" class="form-label">Interés principal</label>
+                <select id="servicio" name="servicio">
+                  <option value="Agentes de IA">Agentes de IA</option>
+                  <option value="Automatización">Automatización</option>
+                  <option value="Web profesional">Web profesional</option>
+                  <option value="Marketing con IA">Marketing con IA</option>
+                  <option value="Plan IA Business">Plan IA Business</option>
+                  <option value="Plan IA Enterprise">Plan IA Enterprise</option>
+                </select>
+              </div>
+              <div>
+                <label for="telefono" class="form-label">WhatsApp</label>
+                <input id="telefono" name="telefono" placeholder="+595 ...">
+              </div>
+            </div>
+
+            <div>
+              <label for="mensaje" class="form-label">Mensaje</label>
+              <textarea id="mensaje" name="mensaje" placeholder="Contame qué hace tu negocio y qué te gustaría automatizar o mejorar"></textarea>
+            </div>
+
+            <button class="btn btn-primary" type="submit">Enviar por WhatsApp</button>
+
+            <p class="note">
+              Este formulario redirige a WhatsApp con tus datos precargados.
+            </p>
+          </form>
+        </div>
+
+        <div class="card">
+          <div class="icon">⚡</div>
+          <h3>Lo que podemos implementar</h3>
+          <p>Desde una landing que convierta hasta agentes de IA que respondan, filtren y ayuden a vender por vos.</p>
+
+          <ul class="list" style="margin-top:14px;">
+            <li><span class="check">✓</span> IA para atención al cliente</li>
+            <li><span class="check">✓</span> IA para marketing y ventas</li>
+            <li><span class="check">✓</span> Automatización operativa</li>
+            <li><span class="check">✓</span> Sistemas comerciales completos</li>
+          </ul>
+
+          <div class="hero-actions" style="margin-top:14px;">
+            <a class="btn btn-primary" id="waLink" href="https://wa.me/595971853291" target="_blank" rel="noopener">
+              Escribirme por WhatsApp
+            </a>
+            <a class="btn btn-ghost" href="#ia">Ver servicios IA</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="inner">
+        <div>© <span id="year"></span> KeyVox — IA, Automatización y Marketing para Empresas</div>
+        <div><img src="keyvoxlogo.png" alt="KeyVox logo" style="height:90px;width:auto;"></div>
+        <div style="display:flex; gap:12px; flex-wrap:wrap;">
+          <a href="#servicios">Servicios</a>
+          <a href="#ia">IA</a>
+          <a href="#metodo">Método</a>
+          <a href="#contacto">Contacto</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const intro = document.getElementById("gifIntro");
+
+      setTimeout(function () {
+        intro.classList.add("ocultar-intro");
+
+        setTimeout(function () {
+          intro.style.display = "none";
+        }, 1200);
+      }, 9000);
+    });
+
+    const WHATSAPP_NUMBER = "595971853291";
+
+    function buildWhatsAppLink(message) {
+      const base = "https://wa.me/" + WHATSAPP_NUMBER;
+      const text = encodeURIComponent(message || "Hola KeyVox, quiero implementar IA en mi negocio.");
+      return base + "?text=" + text;
+    }
+
+    function prefillPlan(planName) {
+      const sel = document.getElementById("servicio");
+      const msg = document.getElementById("mensaje");
+
+      if (sel) {
+        if (planName === "IA Start") sel.value = "Automatización";
+        else if (planName === "IA Business") sel.value = "Plan IA Business";
+        else if (planName === "IA Enterprise") sel.value = "Plan IA Enterprise";
+      }
+
+      if (msg) {
+        msg.value = `Hola KeyVox, quiero avanzar con el plan ${planName}. Mi empresa necesita mejorar: `;
+      }
+
+      document.getElementById("contacto").scrollIntoView({ behavior: "smooth" });
+    }
+
+    const wa = document.getElementById("waLink");
+    if (wa) {
+      wa.href = buildWhatsAppLink("Hola KeyVox, quiero un diagnóstico para implementar IA en mi negocio.");
+    }
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    document.getElementById("leadForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const nombre = document.getElementById("nombre").value || "";
+      const empresa = document.getElementById("empresa").value || "";
+      const servicio = document.getElementById("servicio").value || "";
+      const tel = document.getElementById("telefono").value || "";
+      const mensaje = document.getElementById("mensaje").value || "";
+
+      const full = `Hola KeyVox, soy ${nombre}${empresa ? " (" + empresa + ")" : ""}. ` +
+                   `Me interesa: ${servicio}. ` +
+                   `${tel ? "Mi WhatsApp es: " + tel + ". " : ""}` +
+                   `Necesito ayuda con: ${mensaje}`;
+
+      window.open(buildWhatsAppLink(full), "_blank");
+    });
+  </script>
+</body>
+</html>
