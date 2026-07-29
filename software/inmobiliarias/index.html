@@ -1,0 +1,606 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="KeyVox para inmobiliarias: un solo sistema para todas tus razones sociales. Facturación ARCA, ajuste de contratos por índice, liquidaciones a propietarios y consolidado del grupo." />
+
+  <link rel="icon" type="image/png" href="../../keyvoxlogo.png">
+  <link rel="apple-touch-icon" href="../../keyvoxlogo.png">
+
+  <title>KeyVox | Software de gestión para inmobiliarias</title>
+  <link rel="stylesheet" href="../../styles.css">
+
+  <style>
+    /* Estilos propios de esta página (mockups, comparativo y avisos).
+       El resto viene de ../../styles.css */
+
+    .note-box{
+      display:flex; gap:14px; align-items:flex-start;
+      border-radius: var(--radius); border:1px solid rgba(245,158,11,.32);
+      background: radial-gradient(500px 200px at 10% 0%, rgba(245,158,11,.10), transparent 65%), rgba(255,255,255,.03);
+      padding:16px 18px; margin:0 auto 8px; max-width:var(--max);
+    }
+    .note-box .icon{ background: rgba(245,158,11,.14); border-color: rgba(245,158,11,.3); flex:0 0 auto; margin-bottom:0; }
+    .note-box strong{ color:#fcd34d; }
+    .note-box p{ margin:4px 0 0; color: rgba(233,232,255,.78); font-size:13.4px; line-height:1.6; }
+
+    .impact-band-inner{ display:grid; grid-template-columns: repeat(3,1fr); gap:14px; }
+    .impact-item{ border-radius:18px; border:1px solid var(--border); background: rgba(255,255,255,.03); padding:18px; }
+    .impact-item .k{ font-family:var(--mono, ui-monospace, Consolas, monospace); font-size:22px; font-weight:700; font-variant-numeric: tabular-nums; }
+    .impact-item .k.warn{ color:var(--warn); }
+    .impact-item .k.ok{ color:var(--ok); }
+    .impact-item span{ display:block; color: rgba(233,232,255,.68); font-size:13px; line-height:1.5; margin-top:6px; }
+
+    /* ===== MOCKUP UI ===== */
+    .mockup-window{
+      border-radius:18px; overflow:hidden;
+      border:1px solid var(--border);
+      background:#0a0a20;
+      box-shadow: 0 20px 60px rgba(0,0,0,.4);
+    }
+    .mockup-titlebar{
+      display:flex; align-items:center; gap:10px;
+      padding:10px 14px; background: rgba(255,255,255,.03); border-bottom:1px solid var(--border);
+    }
+    .mockup-dots{ display:flex; gap:6px; }
+    .mockup-dots span{ width:9px; height:9px; border-radius:50%; background: rgba(255,255,255,.16); }
+    .mockup-dots span:nth-child(1){ background:#fb7185; opacity:.6 }
+    .mockup-dots span:nth-child(2){ background:#f59e0b; opacity:.6 }
+    .mockup-dots span:nth-child(3){ background:#34d399; opacity:.6 }
+    .mockup-url{
+      font-family:var(--mono, ui-monospace, Consolas, monospace); font-size:11px; color: rgba(233,232,255,.5);
+      background: rgba(0,0,0,.3); border-radius:8px; padding:4px 10px; flex:1;
+    }
+
+    .mock-app{ display:grid; grid-template-columns: 148px 1fr; min-height:340px; }
+    .mock-sidebar{
+      background: rgba(255,255,255,.02); border-right:1px solid var(--border);
+      padding:14px 10px; display:flex; flex-direction:column; gap:3px;
+    }
+    .mock-sidebar .mbrand{ display:flex; align-items:center; gap:6px; font-weight:800; font-size:12.5px; padding:6px 8px 14px; color:#fff; }
+    .mock-nav-item{
+      font-size:12px; padding:8px 10px; border-radius:10px; color: rgba(233,232,255,.62);
+      display:flex; align-items:center; gap:8px;
+    }
+    .mock-nav-item.active{ background: linear-gradient(135deg, rgba(168,85,247,.25), rgba(59,130,246,.2)); color:#fff; border:1px solid rgba(168,85,247,.3); }
+
+    .mock-main{ padding:16px; }
+    .mock-topbar{ display:flex; align-items:center; justify-content:space-between; margin-bottom:14px; }
+    .mock-topbar .title{ font-size:14px; font-weight:700; }
+    .mock-avatar{ width:24px; height:24px; border-radius:50%; background: linear-gradient(135deg, var(--lila), var(--azul)); flex:0 0 auto; }
+
+    .mock-stat-grid{ display:grid; grid-template-columns: repeat(4,1fr); gap:10px; margin-bottom:14px; }
+    .mock-stat{ background: rgba(255,255,255,.03); border:1px solid var(--border); border-radius:12px; padding:10px 12px; }
+    .mock-stat b{ display:block; font-family:var(--mono, ui-monospace, Consolas, monospace); font-size:15px; font-variant-numeric: tabular-nums; }
+    .mock-stat span{ font-size:10.5px; color: rgba(233,232,255,.55); }
+
+    table.mock-table{ width:100%; border-collapse:collapse; font-size:11.5px; }
+    table.mock-table th{ text-align:left; color: rgba(233,232,255,.5); font-weight:600; font-size:10.5px; text-transform:uppercase; letter-spacing:.5px; padding:6px 8px; border-bottom:1px solid var(--border); }
+    table.mock-table td{ padding:8px; border-bottom:1px solid rgba(255,255,255,.05); color: rgba(233,232,255,.85); }
+
+    .status-pill{ font-size:10.5px; padding:3px 8px; border-radius:999px; font-weight:600; display:inline-block; }
+    .status-ok{ background: rgba(52,211,153,.14); color:#6ee7b7; border:1px solid rgba(52,211,153,.3); }
+    .status-warn{ background: rgba(245,158,11,.14); color:#fcd34d; border:1px solid rgba(245,158,11,.3); }
+    .status-danger{ background: rgba(251,113,133,.14); color:#fda4af; border:1px solid rgba(251,113,133,.3); }
+
+    .mock-mini{ padding:14px; }
+    .mock-field{ margin-bottom:10px; }
+    .mock-field label{ display:block; font-size:10px; color: rgba(233,232,255,.5); text-transform:uppercase; letter-spacing:.5px; margin-bottom:3px; }
+    .mock-field .val{ font-size:13px; color:#fff; }
+    .mock-field .val.money{ font-family:var(--mono, ui-monospace, Consolas, monospace); font-variant-numeric: tabular-nums; }
+    .mock-divider{ height:1px; background: var(--border); margin:12px 0; }
+    .mock-btn-row{ display:flex; gap:8px; margin-top:12px; }
+    .mock-btn{ font-size:11px; padding:8px 10px; border-radius:9px; text-align:center; flex:1; font-weight:700; }
+    .mock-btn.primary{ background: linear-gradient(135deg, rgba(168,85,247,.85), rgba(59,130,246,.85)); color:#fff; }
+    .mock-btn.ghost{ background: rgba(255,255,255,.05); color: rgba(233,232,255,.8); border:1px solid var(--border); }
+
+    .mock-invoice-row{ display:flex; justify-content:space-between; align-items:center; padding:8px 0; border-bottom:1px solid rgba(255,255,255,.05); font-size:11.5px; }
+    .mock-invoice-row .amt{ font-family:var(--mono, ui-monospace, Consolas, monospace); font-variant-numeric: tabular-nums; }
+
+    .cmp-wrap{ overflow-x:auto; border-radius:var(--radius); border:1px solid var(--border); }
+    table.cmp-table{ width:100%; border-collapse:collapse; font-size:13px; min-width:640px; }
+    table.cmp-table th, table.cmp-table td{ padding:12px 14px; text-align:left; border-bottom:1px solid var(--border); }
+    table.cmp-table thead th{ background: rgba(255,255,255,.04); font-size:12px; text-transform:uppercase; letter-spacing:.4px; color: rgba(233,232,255,.6); }
+    table.cmp-table tbody th{ font-weight:600; color: rgba(233,232,255,.85); font-size:12.5px; }
+    table.cmp-table td{ color: rgba(233,232,255,.78); }
+    table.cmp-table td.good{ color:#6ee7b7; font-weight:600; }
+    table.cmp-table tr:last-child td, table.cmp-table tr:last-child th{ border-bottom:none; }
+
+    .save-banner{
+      display:flex; align-items:center; gap:10px; justify-content:center;
+      background: rgba(52,211,153,.1); border:1px solid rgba(52,211,153,.3);
+      border-radius:14px; padding:12px 16px; font-size:13.5px; color:#a7f3d0; margin-top:14px;
+      text-align:center;
+    }
+
+    @media (max-width: 980px){
+      .impact-band-inner{ grid-template-columns:1fr; }
+      .mock-app{ grid-template-columns:1fr; }
+      .mock-sidebar{ display:none; }
+      .mock-stat-grid{ grid-template-columns: repeat(2,1fr); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="wrap">
+    <div class="float f1"></div>
+    <div class="float f2"></div>
+    <div class="float f3"></div>
+
+    <!-- NAV -->
+    <nav class="nav" aria-label="Navegación principal">
+      <div class="nav-inner">
+        <div class="brand">
+          <a href="../../index.html" style="display:flex;align-items:center;gap:10px;">
+            <img src="../../keyvoxlogo.png" alt="KeyVox logo" style="height:70px;width:auto;">
+          </a>
+        </div>
+
+        <div class="nav-links">
+          <a href="#problema">El problema</a>
+          <a href="#incluye">Qué resuelve</a>
+          <a href="#preview">Vista previa</a>
+          <a href="#planes">Planes</a>
+          <a href="../index.html">KeyVox Software</a>
+        </div>
+
+        <div style="display:flex; gap:10px;">
+          <a class="btn btn-primary" href="#contacto">Pedir cotización</a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- HERO -->
+    <header class="hero" id="top">
+      <div class="hero-copy">
+        <div class="badge">
+          <span class="dot"></span>
+          KeyVox para inmobiliarias
+        </div>
+
+        <h1>Un solo sistema para <span class="grad">todas tus firmas</span></h1>
+
+        <p class="lead">
+          Si administrás más de una razón social, hoy pagás un plan de ERP por cada una — y ninguna
+          se habla con la otra. KeyVox maneja todas tus firmas desde un mismo lugar, con la
+          facturación, los ajustes por índice y las liquidaciones hechas para inmobiliarias.
+          Un solo abono, sin importar cuántas firmas sean.
+        </p>
+
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#contacto">Pedir cotización</a>
+          <a class="btn btn-ghost" href="#preview">Ver cómo se vería</a>
+        </div>
+
+        <div class="hero-meta">
+          <span class="pill">✅ Todas tus firmas en un login</span>
+          <span class="pill">✅ Facturación electrónica ARCA</span>
+          <span class="pill">✅ Ajuste de contratos por índice</span>
+          <span class="pill">✅ Consolidado del grupo automático</span>
+        </div>
+      </div>
+
+      <div class="hero-media">
+        <div class="mockup-window">
+          <div class="mockup-titlebar">
+            <div class="mockup-dots"><span></span><span></span><span></span></div>
+            <div class="mockup-url">app.tuinmobiliaria.com/panel</div>
+          </div>
+          <div class="mock-app">
+            <div class="mock-sidebar">
+              <div class="mbrand">🏠 Panel</div>
+              <div class="mock-nav-item active">📊 Consolidado</div>
+              <div class="mock-nav-item">🏢 Propiedades</div>
+              <div class="mock-nav-item">👤 Propietarios</div>
+              <div class="mock-nav-item">🔑 Inquilinos</div>
+              <div class="mock-nav-item">💳 Cobros</div>
+              <div class="mock-nav-item">🧾 Facturación</div>
+              <div class="mock-nav-item">📈 Reportes</div>
+            </div>
+            <div class="mock-main">
+              <div class="mock-topbar">
+                <div class="title">Grupo · todas las firmas ▾</div>
+                <div class="mock-avatar"></div>
+              </div>
+              <div class="mock-stat-grid">
+                <div class="mock-stat"><b>148</b><span>Alquileres activos</span></div>
+                <div class="mock-stat"><b>$62,2M</b><span>Cobrado este mes</span></div>
+                <div class="mock-stat"><b>$4,97M</b><span>Comisión del grupo</span></div>
+                <div class="mock-stat"><b>9</b><span>Ajustes por índice</span></div>
+              </div>
+              <table class="mock-table">
+                <thead><tr><th>Propiedad</th><th>Firma</th><th>Vence</th><th>Estado</th></tr></thead>
+                <tbody>
+                  <tr><td>Av. Argentina 1450</td><td>Firma 1</td><td>02/08</td><td><span class="status-pill status-warn">Por vencer</span></td></tr>
+                  <tr><td>Félix San Martín 780</td><td>Firma 3</td><td>05/08</td><td><span class="status-pill status-ok">Al día</span></td></tr>
+                  <tr><td>Av. Olascoaga 220</td><td>Firma 2</td><td>28/07</td><td><span class="status-pill status-danger">Vencido</span></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- NOTA -->
+    <div style="max-width:var(--max); margin:0 auto; padding:0 18px 8px;">
+      <div class="note-box">
+        <div class="icon">💡</div>
+        <div>
+          <strong>Las pantallas son mockups de referencia.</strong>
+          <p>Muestran cómo está pensada la lógica de uso del sistema. Los datos que aparecen son de
+          ejemplo, y el diseño final se ajusta durante la implementación de cada cliente.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROBLEMA -->
+    <section id="problema">
+      <div class="section-title">
+        <div>
+          <span class="eyebrow">El problema</span>
+          <h2>Un ERP genérico te cobra por cada firma y no te da el consolidado</h2>
+          <p>Los ERP contables están pensados para cualquier pyme: venden lo mismo a un comercio con
+          tienda online que a una inmobiliaria. Cobran un plan por cada razón social, y como cada una
+          es una cuenta aparte, no existe la vista del grupo.</p>
+        </div>
+      </div>
+      <div class="impact-band-inner">
+        <div class="impact-item">
+          <div class="k warn">1 plan por firma</div>
+          <span>Cuantas más razones sociales administrás, más veces pagás el mismo software</span>
+        </div>
+        <div class="impact-item">
+          <div class="k warn">Excel a mano</div>
+          <span>Para ver el número del grupo entero, alguien lo arma todos los meses en una planilla</span>
+        </div>
+        <div class="impact-item">
+          <div class="k warn">Sin índices</div>
+          <span>Los aumentos por ICL o IPC se calculan aparte, contrato por contrato, con el riesgo que eso trae</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- QUE RESUELVE -->
+    <section id="incluye">
+      <div class="section-title">
+        <div>
+          <span class="eyebrow">La solución</span>
+          <h2>Qué resuelve KeyVox</h2>
+          <p>Cada función pensada para el día a día real de una inmobiliaria con varias firmas, no para "todo tipo de negocio".</p>
+        </div>
+      </div>
+      <div class="grid grid-3">
+        <article class="card">
+          <div class="icon">🏢</div>
+          <h3>Todas tus firmas, un solo login</h3>
+          <p>Cambiás de firma con un clic o mirás todo junto. Cada razón social con sus datos separados, pero una sola herramienta y un solo equipo trabajando adentro.</p>
+        </article>
+        <article class="card">
+          <div class="icon">📈</div>
+          <h3>Ajuste de contratos por índice</h3>
+          <p>ICL, IPC o Casa Propia: el sistema calcula el aumento que corresponde, avisa antes del vencimiento y deja el nuevo valor cargado. Se acabó la planilla de aumentos.</p>
+        </article>
+        <article class="card">
+          <div class="icon">🧾</div>
+          <h3>Facturación electrónica ARCA</h3>
+          <p>Comisiones, alquileres y honorarios, emitidos directo desde el sistema, con todos tus CUITs y sus puntos de venta configurados.</p>
+        </article>
+        <article class="card">
+          <div class="icon">💳</div>
+          <h3>Cobros y liquidaciones</h3>
+          <p>Cobrás el alquiler, el sistema calcula la comisión y genera la liquidación al propietario automáticamente, lista para enviar.</p>
+        </article>
+        <article class="card">
+          <div class="icon">👤</div>
+          <h3>Propietarios, inquilinos y contratos</h3>
+          <p>Fichas, contratos, garantías y vencimientos de cada propiedad en un solo lugar, sin planillas sueltas y sin importar de qué firma sea.</p>
+        </article>
+        <article class="card">
+          <div class="icon">📊</div>
+          <h3>Consolidado del grupo, automático</h3>
+          <p>Ingresos y comisiones por firma y del grupo entero, exportables para el contador. El Excel mensual armado a mano deja de existir.</p>
+        </article>
+        <article class="card">
+          <div class="icon">📦</div>
+          <h3>Migración de tus cuentas actuales</h3>
+          <p>Traemos propietarios, inquilinos, contratos y saldos desde el sistema que uses hoy. No arrancás con el sistema vacío.</p>
+        </article>
+        <article class="card">
+          <div class="icon">🙂</div>
+          <h3>Interfaz simple, sin curva de aprendizaje</h3>
+          <p>Pensado para que lo use cualquier persona del equipo, tenga o no experiencia con sistemas.</p>
+        </article>
+        <article class="card">
+          <div class="icon">🤖</div>
+          <h3>Asistente con IA <span class="tag" style="margin-left:4px;">Incluido</span></h3>
+          <p>Responde consultas frecuentes de propietarios e inquilinos y automatiza los recordatorios de vencimiento y de ajuste.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- VISTA PREVIA -->
+    <section id="preview">
+      <div class="section-title">
+        <div>
+          <span class="eyebrow">Vista previa</span>
+          <h2>Así se vería tu panel</h2>
+          <p>Mockups de referencia — el diseño final se ajusta durante la implementación, pero la lógica de uso es esta.</p>
+        </div>
+      </div>
+
+      <div class="grid grid-2">
+        <div class="mockup-window">
+          <div class="mockup-titlebar">
+            <div class="mockup-dots"><span></span><span></span><span></span></div>
+            <div class="mockup-url">app.tuinmobiliaria.com/liquidacion/0231</div>
+          </div>
+          <div class="mock-mini">
+            <div style="font-size:13px;font-weight:700;margin-bottom:10px;">Liquidación a propietario</div>
+            <div class="mock-field"><label>Firma</label><div class="val">Firma 1 · CUIT 30-XXXXXXXX-X</div></div>
+            <div class="mock-field"><label>Propiedad</label><div class="val">Av. Argentina 1450, Depto. B</div></div>
+            <div class="mock-field"><label>Propietario</label><div class="val">C. Elizalde</div></div>
+            <div class="mock-field"><label>Inquilino</label><div class="val">M. Ibáñez</div></div>
+            <div class="mock-divider"></div>
+            <div class="mock-field"><label>Alquiler cobrado</label><div class="val money">$420.000</div></div>
+            <div class="mock-field"><label>Comisión inmobiliaria (8%)</label><div class="val money">- $33.600</div></div>
+            <div class="mock-field"><label>Total a liquidar</label><div class="val money" style="color:#6ee7b7;font-weight:700;">$386.400</div></div>
+            <div class="mock-btn-row">
+              <div class="mock-btn primary">Generar liquidación PDF</div>
+              <div class="mock-btn ghost">Enviar por WhatsApp</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mockup-window">
+          <div class="mockup-titlebar">
+            <div class="mockup-dots"><span></span><span></span><span></span></div>
+            <div class="mockup-url">app.tuinmobiliaria.com/facturacion</div>
+          </div>
+          <div class="mock-mini">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
+              <div style="font-size:13px;font-weight:700;">Facturación ARCA · todas las firmas</div>
+              <div class="mock-btn primary" style="flex:none;padding:6px 12px;">+ Nueva factura</div>
+            </div>
+            <div class="mock-invoice-row"><span>Fact. B 0001-00456 · Firma 1 · C. Elizalde</span><span class="amt">$33.600</span> <span class="status-pill status-ok">Emitida</span></div>
+            <div class="mock-invoice-row"><span>Fact. B 0003-00218 · Firma 3 · R. Contreras</span><span class="amt">$28.900</span> <span class="status-pill status-ok">Emitida</span></div>
+            <div class="mock-invoice-row"><span>Fact. B 0002-00091 · Firma 2 · L. Farías</span><span class="amt">$41.200</span> <span class="status-pill status-warn">Pendiente</span></div>
+            <div class="mock-invoice-row" style="border-bottom:none;"><span>Fact. B 0001-00455 · Firma 1 · G. Núñez</span><span class="amt">$35.000</span> <span class="status-pill status-ok">Emitida</span></div>
+          </div>
+        </div>
+
+        <div class="mockup-window">
+          <div class="mockup-titlebar">
+            <div class="mockup-dots"><span></span><span></span><span></span></div>
+            <div class="mockup-url">app.tuinmobiliaria.com/ajustes-por-indice</div>
+          </div>
+          <div class="mock-mini">
+            <div style="font-size:13px;font-weight:700;margin-bottom:10px;">Ajuste de contrato por índice</div>
+            <div class="mock-field"><label>Contrato</label><div class="val">Av. Argentina 1450 · Firma 1</div></div>
+            <div class="mock-field"><label>Índice pactado</label><div class="val">ICL — Banco Central</div></div>
+            <div class="mock-field"><label>Próximo ajuste</label><div class="val">01/08/2026 (cuatrimestral)</div></div>
+            <div class="mock-divider"></div>
+            <div class="mock-field"><label>Valor vigente</label><div class="val money">$420.000</div></div>
+            <div class="mock-field"><label>Variación del índice</label><div class="val money">+ 18,4%</div></div>
+            <div class="mock-field"><label>Nuevo valor</label><div class="val money" style="color:#6ee7b7;font-weight:700;">$497.280</div></div>
+            <div class="mock-btn-row">
+              <div class="mock-btn primary">Aplicar y notificar</div>
+              <div class="mock-btn ghost">Ver cálculo</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mockup-window">
+          <div class="mockup-titlebar">
+            <div class="mockup-dots"><span></span><span></span><span></span></div>
+            <div class="mockup-url">app.tuinmobiliaria.com/consolidado</div>
+          </div>
+          <div class="mock-mini">
+            <div style="font-size:13px;font-weight:700;margin-bottom:10px;">Consolidado del grupo · julio</div>
+            <div class="mock-invoice-row"><span>Firma 1</span><span class="amt">$18.480.000</span> <span class="status-pill status-ok">Cerrado</span></div>
+            <div class="mock-invoice-row"><span>Firma 2</span><span class="amt">$13.020.000</span> <span class="status-pill status-ok">Cerrado</span></div>
+            <div class="mock-invoice-row"><span>Firma 3</span><span class="amt">$11.340.000</span> <span class="status-pill status-ok">Cerrado</span></div>
+            <div class="mock-invoice-row"><span>Resto de las firmas</span><span class="amt">$19.320.000</span> <span class="status-pill status-warn">En curso</span></div>
+            <div class="mock-divider"></div>
+            <div class="mock-field"><label>Total cobrado del grupo</label><div class="val money" style="color:#6ee7b7;font-weight:700;">$62.160.000</div></div>
+            <div class="mock-btn-row">
+              <div class="mock-btn primary">Exportar para el contador</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- COMPARATIVO -->
+    <section id="comparativo">
+      <div class="section-title">
+        <div>
+          <span class="eyebrow">Comparativo</span>
+          <h2>Un ERP genérico vs. un sistema hecho para inmobiliarias</h2>
+        </div>
+      </div>
+      <div class="cmp-wrap">
+        <table class="cmp-table">
+          <thead>
+            <tr><th></th><th>ERP contable genérico</th><th>KeyVox</th></tr>
+          </thead>
+          <tbody>
+            <tr><th>Cómo cobra</th><td>Un plan por cada razón social</td><td class="good">Un solo abono, todas tus firmas</td></tr>
+            <tr><th>Consolidado del grupo</th><td>No — se arma a mano en Excel</td><td class="good">Automático</td></tr>
+            <tr><th>Ajuste de contratos por índice</th><td>No</td><td class="good">ICL, IPC o Casa Propia</td></tr>
+            <tr><th>Liquidación a propietarios</th><td>Se arma aparte</td><td class="good">Automática, con la comisión calculada</td></tr>
+            <tr><th>Facturación electrónica</th><td>Sí, genérica</td><td class="good">Sí, con tus CUITs y puntos de venta</td></tr>
+            <tr><th>Funciones que no usás pero pagás</th><td>Sí (e-commerce, multi-moneda, etc.)</td><td class="good">No</td></tr>
+            <tr><th>Cómo sube el precio</th><td>Cada trimestre, sin aviso previo</td><td class="good">Una vez por semestre, por IPC, avisado con 60 días</td></tr>
+            <tr><th>Tus datos</th><td>Exportación limitada</td><td class="good">Son tuyos, exportables siempre</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="save-banner">💰 Cuantas más razones sociales administrás, más grande es la diferencia — porque el ERP genérico te cobra una vez por cada una y nosotros no</div>
+    </section>
+
+    <!-- PLANES -->
+    <section id="planes">
+      <div class="section-title">
+        <div>
+          <span class="eyebrow">Inversión</span>
+          <h2>Dos formas de trabajar con nosotros</h2>
+          <p>El número final depende de cuántas firmas y cuántas propiedades administrás. Lo pasamos por escrito dentro de las 24 horas de una llamada de 30 minutos.</p>
+        </div>
+      </div>
+      <div class="grid grid-2">
+        <div class="card price reco">
+          <div class="top"><div><b>Suscripción mensual</b><br><small>Recomendada — sin inversión inicial</small></div><span class="tag" style="border-color:rgba(52,211,153,.4);color:#a7f3d0;">Recomendada</span></div>
+          <div class="amount" style="font-size:22px;">Un abono, todas tus firmas</div>
+          <ul class="list">
+            <li><span class="check">✓</span> Cubre todas tus razones sociales y todos los usuarios del equipo</li>
+            <li><span class="check">✓</span> Incluye hosting, soporte, backups y actualizaciones</li>
+            <li><span class="check">✓</span> Migración de tus cuentas actuales incluida</li>
+            <li><span class="check">✓</span> Horas mensuales de ajustes y mejoras a pedido</li>
+            <li><span class="check">✓</span> Ajuste una vez por semestre por IPC, avisado con 60 días</li>
+            <li><span class="check">✓</span> Empezás a ahorrar desde el primer mes</li>
+            <li><span class="check">✓</span> <strong>Pagando el año por adelantado, 10% de descuento</strong> y precio congelado los 12 meses</li>
+          </ul>
+        </div>
+        <div class="card price">
+          <div class="top"><div><b>Licencia permanente</b><br><small>Pago único + mantenimiento mensual</small></div><span class="tag">Pago único</span></div>
+          <div class="amount" style="font-size:22px;">Implementación a medida</div>
+          <ul class="list">
+            <li><span class="check">✓</span> Implementación completa para todas tus firmas, pagable en cuotas</li>
+            <li><span class="check">✓</span> Licencia de uso permanente, sin límite de tiempo ni de usuarios</li>
+            <li><span class="check">✓</span> Migración y capacitación al equipo incluidas</li>
+            <li><span class="check">✓</span> Más un mensual de hosting y mantenimiento, que mantiene el sistema al día con los cambios de ARCA y de los índices</li>
+            <li><span class="check">✓</span> Conviene si pensás quedarte más de dos años y medio y podés poner la inversión hoy</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- COMO SEGUIMOS -->
+    <section id="siguientes">
+      <div class="section-title">
+        <div>
+          <span class="eyebrow">Próximos pasos</span>
+          <h2>Cómo seguimos</h2>
+        </div>
+      </div>
+      <div class="card steps" style="max-width:640px;">
+        <div class="step"><h4>Llamada de 30 minutos</h4><p>Relevamos cuántas firmas y propiedades administrás, qué índices usás en los contratos y qué funciones de tu sistema actual tocás realmente.</p></div>
+        <div class="step"><h4>Cotización por escrito en 24 horas</h4><p>Con lo relevado te pasamos el número y el alcance cerrado, sin letra chica.</p></div>
+        <div class="step"><h4>Migración de tus cuentas</h4><p>Traemos propietarios, inquilinos, contratos y saldos, y validamos los números con tu contador antes de seguir.</p></div>
+        <div class="step"><h4>Puesta en marcha y capacitación</h4><p>Arrancamos firma por firma para no frenar la operación, con acompañamiento en las primeras semanas de uso.</p></div>
+      </div>
+
+      <div class="grid grid-2" style="margin-top:24px;">
+        <article class="card">
+          <div class="icon">🤝</div>
+          <h3>Programa de lanzamiento</h3>
+          <p>KeyVox para inmobiliarias está abriendo con sus primeras inmobiliarias. Si entrás en esta etapa,
+          las condiciones son mejores que las que van a estar publicadas más adelante — a cambio te pedimos
+          feedback sobre qué agregar.</p>
+          <ul class="list" style="margin-top:12px;">
+            <li><span class="check">✓</span> Tarifa de fundador: cuando suba el precio de lista, quedás afuera de ese aumento</li>
+            <li><span class="check">✓</span> Prioridad en el roadmap: lo que pidas se construye primero</li>
+            <li><span class="check">✓</span> Línea directa con quien desarrolla, sin mesa de ayuda</li>
+          </ul>
+        </article>
+        <article class="card">
+          <div class="icon">📋</div>
+          <h3>Letra chica, sin sorpresas</h3>
+          <ul class="list">
+            <li><span class="check">✓</span> <strong>Los datos son tuyos.</strong> Propietarios, inquilinos, contratos y facturación se exportan completos cuando lo pidas, sigas o no con nosotros.</li>
+            <li><span class="check">✓</span> <strong>La plataforma es de KeyVox.</strong> Ambas modalidades dan derecho de uso, no incluyen el código fuente ni exclusividad.</li>
+            <li><span class="check">✓</span> <strong>Suscripción:</strong> permanencia mínima de 12 meses; después, baja con 30 días de aviso.</li>
+            <li><span class="check">✓</span> <strong>Ajustes de precio</strong> una vez por semestre, por IPC, avisados con 60 días. Nunca por sorpresa.</li>
+            <li><span class="check">✓</span> Durante la migración conviven los dos sistemas: no se corta la operación ni se factura dos veces.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- CONTACTO -->
+    <section id="contacto">
+      <div class="section-title">
+        <div>
+          <span class="eyebrow">Contacto</span>
+          <h2>¿Cuánto te saldría a vos?</h2>
+          <p>Contanos cuántas firmas y propiedades administrás y te pasamos el número por escrito.</p>
+        </div>
+      </div>
+      <div class="contact">
+        <div class="card">
+          <form class="form" id="leadForm">
+            <div class="grid grid-2">
+              <div><label for="nombre" class="form-label">Nombre</label><input id="nombre" name="nombre" placeholder="Tu nombre" required></div>
+              <div><label for="empresa" class="form-label">Inmobiliaria</label><input id="empresa" name="empresa" placeholder="Nombre de la inmobiliaria"></div>
+            </div>
+            <div class="grid grid-2">
+              <div>
+                <label for="firmas" class="form-label">¿Cuántas razones sociales?</label>
+                <select id="firmas" name="firmas">
+                  <option value="1 firma">1 firma</option>
+                  <option value="2 a 3 firmas" selected>2 a 3 firmas</option>
+                  <option value="4 a 6 firmas">4 a 6 firmas</option>
+                  <option value="Más de 6 firmas">Más de 6 firmas</option>
+                </select>
+              </div>
+              <div><label for="telefono" class="form-label">WhatsApp</label><input id="telefono" name="telefono" placeholder="+54 9 ..."></div>
+            </div>
+            <div><label for="mensaje" class="form-label">Mensaje</label><textarea id="mensaje" name="mensaje" placeholder="Contanos cuántas propiedades administrás y qué sistema usás hoy"></textarea></div>
+            <button class="btn btn-primary" type="submit">Pedir cotización por WhatsApp</button>
+            <p class="note">Este formulario redirige a WhatsApp con tus datos precargados.</p>
+          </form>
+        </div>
+        <div class="card">
+          <div class="icon">💬</div>
+          <h3>Cotización en 24 horas</h3>
+          <p>Una llamada de 30 minutos y te pasamos el número por escrito, con el alcance cerrado. Sin compromiso.</p>
+          <ul class="list" style="margin-top:14px;">
+            <li><span class="check">✓</span> Migración de tus cuentas actuales incluida</li>
+            <li><span class="check">✓</span> Condiciones del programa de lanzamiento</li>
+            <li><span class="check">✓</span> Sin compromiso hasta la cotización final</li>
+          </ul>
+          <div class="hero-actions" style="margin-top:14px;">
+            <a class="btn btn-primary" id="waLink" href="https://wa.me/595971853291" target="_blank" rel="noopener">Escribir por WhatsApp</a>
+            <a class="btn btn-ghost" href="../index.html">Volver a KeyVox Software</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="inner">
+        <div>© <span id="year"></span> KeyVox — Software de gestión para inmobiliarias</div>
+        <div class="nav-links">
+          <a href="#incluye">Qué resuelve</a>
+          <a href="#planes">Planes</a>
+          <a href="../index.html">KeyVox Software</a>
+          <a href="../../index.html">Inicio</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+<script>
+  const WHATSAPP_NUMBER = "595971853291";
+  function buildWhatsAppLink(message){
+    return "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(message || "Hola KeyVox, quiero una cotización del sistema para mi inmobiliaria.");
+  }
+  const wa = document.getElementById("waLink");
+  if (wa) wa.href = buildWhatsAppLink("Hola KeyVox, quiero una cotización del sistema para mi inmobiliaria.");
+  document.getElementById("year").textContent = new Date().getFullYear();
+  document.getElementById("leadForm").addEventListener("submit", function(e){
+    e.preventDefault();
+    const nombre = document.getElementById("nombre").value || "";
+    const empresa = document.getElementById("empresa").value || "";
+    const firmas = document.getElementById("firmas").value || "";
+    const tel = document.getElementById("telefono").value || "";
+    const mensaje = document.getElementById("mensaje").value || "";
+    const full = `Hola KeyVox, soy ${nombre}${empresa ? " de " + empresa : ""}. Administramos ${firmas}. ${tel ? "Mi WhatsApp es: " + tel + ". " : ""}${mensaje}`;
+    window.open(buildWhatsAppLink(full), "_blank");
+  });
+</script>
+</body>
+</html>
