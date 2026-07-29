@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+<meta name="googlebot" content="noindex, nofollow">
+<meta name="referrer" content="no-referrer">
+<title>KeyVox — Propuesta de trabajo para NutriSlim</title>
+<meta name="description" content="Propuesta de reestructuración comercial para la clínica NutriSlim: embudo de captación de pacientes y lanzamiento internacional del método de la Dra. Lilian.">
+<style>
+  :root{
+    --bg:#060615;
+    --card:#0d0d24;
+    --text:#e9e8ff;
+    --muted:#b3affe;
+    --lila:#a855f7;
+    --azul:#3b82f6;
+    --cian:#22d3ee;
+    --ok:#34d399;
+    --warn:#f59e0b;
+    --danger:#fb7185;
+    --border:rgba(255,255,255,.10);
+    --ring: 0 0 0 1px rgba(168,85,247,.25), 0 0 40px rgba(59,130,246,.16);
+    --shadow: 0 12px 50px rgba(0,0,0,.45);
+    --radius: 20px;
+    --max: 1180px;
+    --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  }
+
+  *{box-sizing:border-box}
+  html,body{height:100%}
+
+  body{
+    margin:0;
+    font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+    color:var(--text);
+    background:
+      radial-gradient(900px 500px at 15% 8%, rgba(168,85,247,.20), transparent 55%),
+      radial-gradient(800px 500px at 85% 12%, rgba(59,130,246,.18), transparent 55%),
+      radial-gradient(900px 600px at 50% 90%, rgba(34,211,238,.10), transparent 60%),
+      linear-gradient(180deg, #050512 0%, #070726 35%, #050512 100%);
+    overflow-x:hidden;
+  }
+
+  a{ color:inherit; text-decoration:none; }
+  .wrap{ position:relative; z-index:1; }
+  section{ max-width:var(--max); margin:0 auto; padding:34px 18px; }
+
+  .nav{
+    position:sticky; top:0; z-index:50;
+    backdrop-filter: blur(12px);
+    background: rgba(6,6,21,.7);
+    border-bottom:1px solid rgba(168,85,247,.18);
+  }
+  .nav-inner{
+    max-width:var(--max); margin:0 auto;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:12px 18px; gap:14px; flex-wrap:wrap;
+  }
+  .brand{ display:flex; align-items:center; gap:10px; font-weight:800; letter-spacing:-.3px; }
+  .nav-links{ display:flex; gap:4px; align-items:center; font-size:13.5px; color:rgba(233,232,255,.86); flex-wrap:wrap; }
+  .nav-links a{ padding:8px 10px; border-radius:12px; transition:.2s ease; }
+  .nav-links a:hover{ background: rgba(168,85,247,.10); color:#fff; }
+
+  .btn{
+    display:inline-flex; align-items:center; justify-content:center;
+    padding:12px 16px; border-radius:14px; font-weight:700; font-size:14px;
+    border:1px solid rgba(255,255,255,.14); background: rgba(255,255,255,.06);
+    transition: transform .15s ease, box-shadow .2s ease;
+    cursor:pointer; white-space:nowrap;
+  }
+  .btn:hover{ transform: translateY(-1px); box-shadow: var(--shadow); }
+  .btn-primary{
+    border:1px solid rgba(168,85,247,.35);
+    background: linear-gradient(135deg, rgba(168,85,247,.88), rgba(59,130,246,.88));
+  }
+  .btn-ghost{ background: rgba(255,255,255,.03); }
+
+  header.hero{ max-width:var(--max); margin:0 auto; padding:56px 18px 20px; }
+  .badge{
+    display:inline-flex; gap:10px; align-items:center; padding:8px 12px;
+    border-radius:999px; border:1px solid rgba(168,85,247,.28);
+    background: rgba(168,85,247,.08); color: rgba(233,232,255,.92);
+    font-size:12.5px; width:fit-content; box-shadow: var(--ring);
+  }
+  .dot{ width:8px; height:8px; border-radius:99px; background: linear-gradient(180deg, var(--lila), var(--azul)); }
+  h1{ margin:16px 0 14px; font-size: clamp(30px, 4.4vw, 50px); line-height:1.08; letter-spacing:-1px; text-wrap:balance; max-width:20ch; }
+  .grad{
+    background: linear-gradient(90deg, rgba(168,85,247,1), rgba(59,130,246,1), rgba(34,211,238,1));
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+  }
+  .lead{ margin:0; color: rgba(233,232,255,.80); font-size:16.5px; line-height:1.7; max-width:62ch; }
+  .hero-actions{ display:flex; gap:12px; flex-wrap:wrap; margin-top:24px; }
+
+  .card{
+    border-radius: var(--radius);
+    border:1px solid var(--border);
+    background: rgba(255,255,255,.03);
+    padding:22px;
+  }
+  .card h3{ margin:10px 0 8px; font-size:17px; letter-spacing:-.2px; }
+  .card p{ margin:0; color: rgba(233,232,255,.72); font-size:14px; line-height:1.6; }
+  .icon{
+    width:38px; height:38px; border-radius:12px; display:grid; place-items:center;
+    background: rgba(168,85,247,.12); border:1px solid rgba(168,85,247,.25); font-size:18px;
+  }
+
+  .grid{ display:grid; gap:16px; }
+  .grid-2{ grid-template-columns: repeat(2, 1fr); }
+  .grid-3{ grid-template-columns: repeat(3, 1fr); }
+
+  .section-title{ margin-bottom:20px; }
+  .eyebrow{
+    display:inline-block; font-size:11.5px; text-transform:uppercase; letter-spacing:1.4px;
+    color:var(--muted); margin-bottom:8px; font-weight:700;
+  }
+  .section-title h2{ margin:0; font-size:27px; letter-spacing:-.4px; text-wrap:balance; }
+  .section-title p{ margin:8px 0 0; color: rgba(233,232,255,.68); max-width:65ch; line-height:1.6; font-size:14.5px; }
+
+  .note-box{
+    display:flex; gap:14px; align-items:flex-start;
+    border-radius: var(--radius); border:1px solid rgba(245,158,11,.32);
+    background: radial-gradient(500px 200px at 10% 0%, rgba(245,158,11,.10), transparent 65%), rgba(255,255,255,.03);
+    padding:16px 18px; margin:0 auto; max-width:var(--max);
+  }
+  .note-box .icon{ background: rgba(245,158,11,.14); border-color: rgba(245,158,11,.3); flex:0 0 auto; }
+  .note-box strong{ color:#fcd34d; }
+  .note-box p{ margin:4px 0 0; color: rgba(233,232,255,.78); font-size:13.4px; line-height:1.6; }
+
+  /* Bloque de reencuadre */
+  .reframe{
+    border-radius: var(--radius);
+    border:1px solid rgba(52,211,153,.3);
+    background:
+      radial-gradient(700px 300px at 15% 0%, rgba(52,211,153,.10), transparent 65%),
+      rgba(255,255,255,.03);
+    padding:30px;
+  }
+  .reframe .quote{
+    font-size:19px; line-height:1.5; color:rgba(233,232,255,.9);
+    border-left:3px solid rgba(245,158,11,.55); padding-left:16px; margin:0 0 20px;
+    font-style:italic; max-width:52ch;
+  }
+  .reframe h3{ margin:0 0 12px; font-size:23px; letter-spacing:-.3px; color:#6ee7b7; }
+  .reframe p{ color:rgba(233,232,255,.8); font-size:15px; line-height:1.7; margin:0 0 12px; max-width:68ch; }
+  .reframe p:last-child{ margin-bottom:0; }
+
+  .flow{ display:grid; gap:12px; }
+  .flow-step{
+    display:flex; gap:14px; align-items:flex-start;
+    border-radius:16px; border:1px solid var(--border);
+    background: rgba(255,255,255,.03); padding:16px 18px;
+  }
+  .flow-step .n{
+    flex:0 0 auto; width:30px; height:30px; border-radius:10px;
+    background: linear-gradient(135deg, rgba(168,85,247,.9), rgba(59,130,246,.9));
+    display:grid; place-items:center; font-weight:800; font-size:13px;
+  }
+  .flow-step h4{ margin:2px 0 5px; font-size:15.5px; }
+  .flow-step p{ margin:0; color:rgba(233,232,255,.7); font-size:13.8px; line-height:1.6; }
+
+  .broken{ border-color:rgba(251,113,133,.3); }
+  .broken .n{ background: rgba(251,113,133,.18); border:1px solid rgba(251,113,133,.4); color:#fda4af; }
+
+  .list{ margin:14px 0 0; padding:0; list-style:none; display:grid; gap:9px; }
+  .list li{ display:flex; gap:9px; color:rgba(233,232,255,.78); font-size:13.8px; line-height:1.5; }
+  .check{
+    width:17px; height:17px; border-radius:7px; background: rgba(52,211,153,.12);
+    border:1px solid rgba(52,211,153,.35); display:grid; place-items:center; flex:0 0 auto;
+    margin-top:1px; color:var(--ok); font-weight:900; font-size:11px;
+  }
+  .cross{
+    width:17px; height:17px; border-radius:7px; background: rgba(251,113,133,.12);
+    border:1px solid rgba(251,113,133,.35); display:grid; place-items:center; flex:0 0 auto;
+    margin-top:1px; color:#fda4af; font-weight:900; font-size:11px;
+  }
+
+  .tag{
+    display:inline-block; font-size:11px; padding:4px 10px; border-radius:999px;
+    border:1px solid rgba(168,85,247,.35); color:var(--muted); font-weight:700;
+    text-transform:uppercase; letter-spacing:.6px;
+  }
+  .tag.fase2{ border-color:rgba(34,211,238,.4); color:#a5f3fc; }
+
+  .phase-head{
+    display:flex; align-items:center; gap:12px; flex-wrap:wrap; margin-bottom:6px;
+  }
+
+  .bridge{
+    border-radius:var(--radius); border:1px solid rgba(34,211,238,.3);
+    background: radial-gradient(700px 260px at 50% 0%, rgba(34,211,238,.10), transparent 65%), rgba(255,255,255,.03);
+    padding:26px; text-align:center;
+  }
+  .bridge h3{ margin:0 0 10px; font-size:21px; color:#a5f3fc; letter-spacing:-.3px; }
+  .bridge p{ margin:0 auto; color:rgba(233,232,255,.8); font-size:15px; line-height:1.7; max-width:64ch; }
+
+  .steps{ counter-reset: step; }
+  .step{ position:relative; padding-left:48px; min-height:40px; }
+  .step + .step{ margin-top:18px; }
+  .step::before{
+    counter-increment: step; content: counter(step);
+    position:absolute; left:0; top:0; width:34px; height:34px; border-radius:12px;
+    background: linear-gradient(135deg, rgba(168,85,247,.9), rgba(59,130,246,.9));
+    display:grid; place-items:center; font-weight:800; font-size:14px;
+  }
+  .step h4{ margin:4px 0 5px; font-size:16px; }
+  .step p{ margin:0; color:rgba(233,232,255,.72); font-size:14px; line-height:1.6; }
+
+  footer{ border-top:1px solid var(--border); margin-top:30px; }
+  footer .inner{
+    max-width:var(--max); margin:0 auto; padding:24px 18px;
+    display:flex; justify-content:space-between; gap:14px; flex-wrap:wrap;
+    color:rgba(233,232,255,.55); font-size:13px;
+  }
+
+  @media (max-width: 900px){
+    .grid-2, .grid-3{ grid-template-columns:1fr; }
+    h1{ max-width:none; }
+    .reframe{ padding:22px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <nav class="nav" aria-label="Navegación principal">
+    <div class="nav-inner">
+      <div class="brand">KeyVox</div>
+      <div class="nav-links">
+        <a href="#diagnostico">Diagnóstico</a>
+        <a href="#reencuadre">El nudo</a>
+        <a href="#fase1">Fase 1</a>
+        <a href="#fase2">Fase 2</a>
+        <a href="#seguimos">Cómo seguimos</a>
+      </div>
+      <a class="btn btn-primary" href="#seguimos">Próximos pasos</a>
+    </div>
+  </nav>
+
+  <header class="hero" id="top">
+    <div class="badge">
+      <span class="dot"></span>
+      Propuesta de trabajo · NutriSlim · Dra. Lilian
+    </div>
+
+    <h1>Tu conocimiento ya funciona. Falta <span class="grad">el camino que lleva la gente hasta él.</span></h1>
+
+    <p class="lead">
+      Tenés algo que la mayoría de las clínicas no tiene: pacientes que se recuperaron y lo cuentan.
+      Ese es el activo más difícil de conseguir en este negocio, y ya lo tenés. Lo que no hay todavía
+      es un recorrido que lleve a una persona desde que ve un reel hasta que se sienta en tu consultorio.
+      Esta propuesta es sobre construir ese recorrido — y después, sobre llevar tu método más allá
+      de Paraguay.
+    </p>
+
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="#reencuadre">Empezar por el nudo del problema</a>
+      <a class="btn btn-ghost" href="#fase1">Ver el plan</a>
+    </div>
+  </header>
+
+  <div style="max-width:var(--max); margin:0 auto; padding:8px 18px 0;">
+    <div class="note-box">
+      <div class="icon">📝</div>
+      <div>
+        <strong>Qué es este documento.</strong>
+        <p>Es el resumen en limpio de lo que conversamos en nuestra reunión, ordenado como plan de trabajo.
+        Todavía no tiene precios ni plazos a propósito: primero quiero que estemos de acuerdo en el
+        diagnóstico y en el rumbo. Si el rumbo te cierra, el paso siguiente es una propuesta con
+        alcance, tiempos y números.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- DIAGNOSTICO -->
+  <section id="diagnostico">
+    <div class="section-title">
+      <span class="eyebrow">Punto de partida</span>
+      <h2>Lo que hay hoy</h2>
+      <p>Nada de esto es culpa de nadie: es lo que pasa cuando cada pieza se fue armando por separado,
+      sin que nadie tuviera la foto completa. Te lo escribo tal cual lo veo.</p>
+    </div>
+
+    <div class="grid grid-3">
+      <div class="card">
+        <div class="icon">🌐</div>
+        <h3>Una web que no está hecha para vender</h3>
+        <p>La página en Wix tiene cinco tarjetas iguales, del mismo tamaño y color, y cinco botones que
+        dicen lo mismo: "Más información". Cuando todo pesa igual, nada pesa. El visitante no sabe
+        qué hacer primero, y cuando alguien no sabe qué hacer, se va.</p>
+      </div>
+      <div class="card">
+        <div class="icon">🎬</div>
+        <h3>Reels bien producidos, sin estructura de venta</h3>
+        <p>La edición es buena, se nota el trabajo. Pero un reel que no promete un resultado concreto y
+        no termina pidiendo una acción clara es contenido, no publicidad. Se ve, gusta, y no pasa nada
+        después.</p>
+      </div>
+      <div class="card">
+        <div class="icon">🕳️</div>
+        <h3>No hay embudo</h3>
+        <p>Este es el centro de todo. Entre "vi un reel" y "pedí un turno" hay un vacío. La persona que
+        se interesó no tiene un próximo paso obvio, entonces el interés se enfría y se pierde.</p>
+      </div>
+      <div class="card">
+        <div class="icon">📊</div>
+        <h3>Sin CRM: no se sabe qué pasa</h3>
+        <p>Hoy no hay forma de responder preguntas básicas: cuánta gente consultó este mes, de dónde
+        vino cada una, cuántas agendaron, cuántas se perdieron y en qué momento. Sin eso no se puede
+        mejorar nada, porque no se sabe qué está fallando.</p>
+      </div>
+      <div class="card">
+        <div class="icon">💬</div>
+        <h3>WhatsApp sin sistema</h3>
+        <p>Es el canal donde la gente realmente escribe en Paraguay. Hoy depende de que alguien esté
+        disponible para contestar. Una consulta de salud que no recibe respuesta rápido se enfría:
+        la persona ya estaba dudando antes de escribir.</p>
+      </div>
+      <div class="card">
+        <div class="icon">💸</div>
+        <h3>Pauta que no vuelve</h3>
+        <p>Hay una inversión mensual en publicidad a través de una agencia, y no hay pacientes que se
+        puedan atribuir a esa inversión. No porque la plata sea poca — sino por lo que viene abajo.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- REENCUADRE -->
+  <section id="reencuadre">
+    <div class="section-title">
+      <span class="eyebrow">El nudo</span>
+      <h2>Creo que el diagnóstico está equivocado</h2>
+    </div>
+
+    <div class="reframe">
+      <p class="quote">"Acá en Paraguay la gente no tiene mucho dinero, por eso tengo pocos pacientes."</p>
+
+      <h3>No es un problema de plata. Es que nadie llega al final del camino.</h3>
+
+      <p>Te lo digo con respeto y porque creo que es la clave de todo: si el problema fuera el poder
+      adquisitivo, la publicidad traería gente que consulta y no puede pagar. Pero eso no es lo que pasa.
+      Lo que pasa es que <strong>no llega nadie</strong>. Son dos problemas completamente distintos, y
+      tienen soluciones opuestas.</p>
+
+      <p>La atención existe: los reels se ven. El problema empieza justo después. La persona que se
+      interesó entra a la página, encuentra cinco botones iguales que dicen "Más información", no entiende
+      cuál es el que le sirve, y cierra. No hubo ninguna decisión de precio ahí. Nunca llegó a preguntar
+      cuánto sale.</p>
+
+      <p>Por eso invertir más en publicidad hoy no serviría: <strong>ninguna inversión sobrevive a un
+      recorrido roto.</strong> Duplicar el presupuesto duplicaría el desperdicio, no los pacientes. Primero
+      se arregla el recorrido; después, cada guaraní que entre en publicidad empieza a rendir.</p>
+
+      <p>Y hay una prueba de que la demanda existe y de que la gente sí paga: <strong>tus propios
+      testimonios.</strong> Los pacientes que se recuperaron no llegaron porque les sobrara el dinero.
+      Llegaron porque tenían un problema que les dolía y encontraron a alguien que les dio una respuesta.
+      Esa gente existe hoy en Paraguay, en este momento, buscando en Google y en Instagram. Solo que
+      todavía no encuentra el camino hasta vos.</p>
+    </div>
+  </section>
+
+  <!-- EL RECORRIDO -->
+  <section>
+    <div class="section-title">
+      <span class="eyebrow">El recorrido</span>
+      <h2>Dónde se cae hoy la gente que ya te vio</h2>
+      <p>Este es el trayecto real de una persona interesada, paso a paso. Fijate dónde se corta.</p>
+    </div>
+
+    <div class="grid grid-2">
+      <div>
+        <p style="color:#fda4af; font-weight:700; font-size:13px; text-transform:uppercase; letter-spacing:1px; margin:0 0 12px;">Hoy</p>
+        <div class="flow">
+          <div class="flow-step"><div class="n">1</div><div><h4>Ve el reel</h4><p>Buena producción, capta la atención. Hasta acá todo bien.</p></div></div>
+          <div class="flow-step"><div class="n">2</div><div><h4>Quiere saber más</h4><p>Va al perfil, busca el link.</p></div></div>
+          <div class="flow-step broken"><div class="n">✕</div><div><h4>Llega a la web y se pierde</h4><p>Cinco opciones idénticas, ningún camino claro. Acá se va la mayoría.</p></div></div>
+          <div class="flow-step broken"><div class="n">✕</div><div><h4>Si escribe, espera</h4><p>El WhatsApp no siempre responde al momento. El interés se enfría.</p></div></div>
+          <div class="flow-step broken"><div class="n">✕</div><div><h4>Nadie sabe que existió</h4><p>No queda registro. Si no agendó hoy, se perdió para siempre.</p></div></div>
+        </div>
+      </div>
+
+      <div>
+        <p style="color:#6ee7b7; font-weight:700; font-size:13px; text-transform:uppercase; letter-spacing:1px; margin:0 0 12px;">Con el embudo armado</p>
+        <div class="flow">
+          <div class="flow-step"><div class="n">1</div><div><h4>Ve el reel</h4><p>Misma producción, pero ahora termina con una promesa concreta y un solo pedido.</p></div></div>
+          <div class="flow-step"><div class="n">2</div><div><h4>Entra a una página con un solo camino</h4><p>Un mensaje, un botón, repetido. Sin opciones que compitan.</p></div></div>
+          <div class="flow-step"><div class="n">3</div><div><h4>Hace el cuestionario gratuito</h4><p>Cuesta poco decir que sí. Y al responder, deja sus datos y sus síntomas.</p></div></div>
+          <div class="flow-step"><div class="n">4</div><div><h4>Recibe respuesta al instante por WhatsApp</h4><p>En el momento exacto en que está interesada, no dos días después.</p></div></div>
+          <div class="flow-step"><div class="n">5</div><div><h4>Agenda — y si no, queda registrada</h4><p>La que no agenda hoy queda en el CRM para volver a contactarla más adelante.</p></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FASE 1 -->
+  <section id="fase1">
+    <div class="section-title">
+      <div class="phase-head">
+        <span class="tag">Fase 1</span>
+        <span class="eyebrow" style="margin:0;">La clínica</span>
+      </div>
+      <h2>Convertir a los que ya te ven en pacientes que llegan</h2>
+      <p>Todo lo de esta fase apunta a lo mismo: aprovechar mejor la atención que ya estás pagando,
+      sin depender de aumentar el presupuesto de publicidad.</p>
+    </div>
+
+    <div class="grid grid-3">
+      <div class="card">
+        <div class="icon">🎯</div>
+        <h3>Una landing con un solo camino</h3>
+        <p>Una página propia, rápida y pensada para convertir, con un mensaje central y un solo botón
+        repetido. Reemplaza a las cinco tarjetas que compiten entre sí. Ya tengo escrita la estructura
+        completa del texto.</p>
+      </div>
+      <div class="card">
+        <div class="icon">📋</div>
+        <h3>El cuestionario como puerta de entrada</h3>
+        <p>Es tu mejor gancho y hoy está enterrado entre otras cuatro opciones. Es gratis, cuesta poco
+        animarse, y te deja a la persona identificada y con sus síntomas descriptos antes de que hables
+        con ella. Pasa a ser la entrada principal.</p>
+      </div>
+      <div class="card">
+        <div class="icon">💬</div>
+        <h3>WhatsApp que responde solo</h3>
+        <p>Respuesta inmediata a cualquier hora, que saluda, entiende la consulta, la clasifica según el
+        motivo y ofrece agendar. Lo que necesita tu criterio médico te llega filtrado; lo repetitivo se
+        resuelve sin vos.</p>
+      </div>
+      <div class="card">
+        <div class="icon">📊</div>
+        <h3>CRM: dejar de manejar a ciegas</h3>
+        <p>Cada persona con nombre, motivo de consulta, de dónde vino y en qué estado está. Vas a poder
+        ver cuánto cuesta traer un paciente y qué contenido trae a los que efectivamente agendan.</p>
+      </div>
+      <div class="card">
+        <div class="icon">📱</div>
+        <h3>Contenido con estructura de venta</h3>
+        <p>Como community manager, no se trata de publicar más sino de que cada pieza tenga un trabajo:
+        atraer, generar confianza o pedir la acción. La producción que ya tenés es buena — lo que hay
+        que cambiar es qué dice y cómo cierra.</p>
+      </div>
+      <div class="card">
+        <div class="icon">🔄</div>
+        <h3>Reactivar los pacientes de antes</h3>
+        <p>Es la fuente más barata de consultas que tenés y está sin usar. Gente que ya te conoce, que
+        ya confió una vez, y a la que hoy nadie le escribe. No cuesta publicidad: cuesta un mensaje
+        bien pensado.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FASE 2 -->
+  <section id="fase2">
+    <div class="section-title">
+      <div class="phase-head">
+        <span class="tag fase2">Fase 2</span>
+        <span class="eyebrow" style="margin:0;">El método, más allá del consultorio</span>
+      </div>
+      <h2>Tu conocimiento, empaquetado y vendido en varios idiomas</h2>
+      <p>Acá es donde tu preocupación por el mercado paraguayo se resuelve de raíz — no peleándola,
+      sino saliéndose de ella.</p>
+    </div>
+
+    <div class="card" style="margin-bottom:18px; border-color:rgba(34,211,238,.28);">
+      <h3 style="margin-top:0; font-size:19px;">El techo del consultorio</h3>
+      <p style="font-size:14.8px;">Atendiendo pacientes uno por uno, tu ingreso tiene un límite duro: las
+      horas que tenés en el día y la cantidad de gente que puede llegar físicamente a tu clínica en Paraguay.
+      Por más que llenes la agenda, ese techo no se mueve. Un curso rompe las dos limitaciones a la vez:
+      tu conocimiento deja de depender de tu presencia, y tu mercado deja de depender de tu ciudad.</p>
+    </div>
+
+    <div class="grid grid-2">
+      <div class="card">
+        <div class="icon">📚</div>
+        <h3>Empaquetar el método</h3>
+        <p>Convertir tu manera de trabajar en medicina ortomolecular en un programa ordenado: módulos,
+        clases grabadas, materiales de apoyo y una progresión clara. Es el trabajo de sacar de tu cabeza
+        lo que hoy solo existe cuando estás vos delante del paciente.</p>
+      </div>
+      <div class="card">
+        <div class="icon">🏛️</div>
+        <h3>Plataforma propia, no alquilada</h3>
+        <p>El curso vive en un sitio tuyo, con su sistema de usuarios, pagos y seguimiento de progreso.
+        La diferencia con publicarlo en una plataforma de terceros es de fondo: la lista de alumnos es
+        tuya, las reglas son tuyas y nadie te cambia las condiciones ni se queda con una comisión.</p>
+      </div>
+      <div class="card">
+        <div class="icon">🚀</div>
+        <h3>Lanzamiento por etapas</h3>
+        <p>En vez de publicar el curso y esperar, se trabaja con la fórmula de lanzamiento de Jeff Walker:
+        una serie de contenidos gratuitos que preparan a la audiencia durante semanas, y recién después
+        se abre la inscripción por tiempo limitado. Se vende mucho más en unos pocos días que de a goteo
+        durante meses.</p>
+      </div>
+      <div class="card">
+        <div class="icon">🌎</div>
+        <h3>Varios idiomas, por orden</h3>
+        <p>Primero español, que es donde ya tenés voz y testimonios. Después portugués, que te abre
+        Brasil pegado a la frontera. Y más adelante inglés. Cada idioma multiplica el mercado sin
+        multiplicar tu trabajo: el contenido ya está grabado.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PUENTE -->
+  <section>
+    <div class="bridge">
+      <h3>Las dos fases son una sola cosa</h3>
+      <p>Esto es lo más importante del plan y quiero que quede claro: <strong>la gente que junta la Fase 1
+      es la que hace posible la Fase 2.</strong> Cada persona que hace el cuestionario, cada paciente que
+      llega, cada seguidor que responde, entra a una lista que es tuya. Cuando llegue el momento de lanzar
+      el curso, no vas a estar empezando de cero comprándole audiencia a nadie: vas a lanzarle a una
+      audiencia que ya te conoce, que ya vio resultados y que ya confía en vos. Sin la Fase 1, la Fase 2
+      arranca a ciegas.</p>
+    </div>
+  </section>
+
+  <!-- ACTIVOS -->
+  <section>
+    <div class="section-title">
+      <span class="eyebrow">Lo que ya tenés</span>
+      <h2>No arrancamos de cero</h2>
+    </div>
+    <div class="grid grid-2">
+      <div class="card">
+        <h3 style="margin-top:0;">A favor</h3>
+        <ul class="list">
+          <li><span class="check">✓</span> <strong>Testimonios reales de pacientes recuperados.</strong> Es lo más difícil de conseguir y ya lo tenés. Es el combustible del embudo y del curso.</li>
+          <li><span class="check">✓</span> <strong>Conocimiento y criterio propios.</strong> Una manera de trabajar que es tuya y que se puede enseñar.</li>
+          <li><span class="check">✓</span> <strong>Producción audiovisual que ya funciona.</strong> Los reels están bien hechos; hay que cambiarles el guion, no la calidad.</li>
+          <li><span class="check">✓</span> <strong>Una base de pacientes que ya confió en vos.</strong> Hoy sin usar.</li>
+          <li><span class="check">✓</span> <strong>Una cuenta de empresa en Instagram ya activa.</strong></li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3 style="margin-top:0;">A construir</h3>
+        <ul class="list">
+          <li><span class="cross">✕</span> Un recorrido claro desde el contenido hasta el turno agendado</li>
+          <li><span class="cross">✕</span> Una página propia, rápida y pensada para convertir</li>
+          <li><span class="cross">✕</span> Atención automática en WhatsApp</li>
+          <li><span class="cross">✕</span> Un CRM que registre a cada persona y en qué estado está</li>
+          <li><span class="cross">✕</span> Los testimonios ordenados, completos y bien contados</li>
+          <li><span class="cross">✕</span> Medición real de qué trae pacientes y qué no</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMO SEGUIMOS -->
+  <section id="seguimos">
+    <div class="section-title">
+      <span class="eyebrow">Próximos pasos</span>
+      <h2>Cómo seguimos</h2>
+    </div>
+
+    <div class="grid grid-2">
+      <div class="card steps">
+        <div class="step">
+          <h4>Me decís si el diagnóstico te cierra</h4>
+          <p>Sobre todo la parte del nudo. Si no estás de acuerdo, lo hablamos — prefiero discutirlo ahora y no después de haber construido sobre una base equivocada.</p>
+        </div>
+        <div class="step">
+          <h4>Reviso lo que hay por dentro</h4>
+          <p>Necesito ver qué está pasando realmente con la publicidad, cómo está armada la web y qué información de pacientes existe. Sin eso, cualquier número que te pase sería inventado.</p>
+        </div>
+        <div class="step">
+          <h4>Te llevo la propuesta con alcance, plazos y precio</h4>
+          <p>Ya con datos reales: qué hago yo, qué necesito de tu lado, en cuánto tiempo y cuánto sale. Ahí sí hablamos de números.</p>
+        </div>
+        <div class="step">
+          <h4>Arrancamos por la Fase 1</h4>
+          <p>El embudo primero. La Fase 2 se empieza a preparar cuando la lista ya está creciendo sola.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="icon">🤝</div>
+        <h3>Qué necesito de tu lado</h3>
+        <ul class="list">
+          <li><span class="check">✓</span> Acceso a la cuenta de Meta Business para ver qué está haciendo la pauta hoy</li>
+          <li><span class="check">✓</span> Acceso a la web actual y a la cuenta de Instagram</li>
+          <li><span class="check">✓</span> Los testimonios de pacientes completos, con la autorización de cada uno para usarlos</li>
+          <li><span class="check">✓</span> La base de pacientes que tengas, aunque esté en papel o en un cuaderno</li>
+          <li><span class="check">✓</span> Una hora tuya para que me expliques tu método como se lo explicás a un paciente</li>
+        </ul>
+        <p style="margin-top:16px; font-size:13.5px; color:rgba(233,232,255,.6);">
+          Ese último punto es el más importante de todos. Todo lo demás lo puedo hacer yo — pero el
+          contenido tiene que salir de vos.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- NOTA FINAL -->
+  <section>
+    <div class="note-box">
+      <div class="icon">⚕️</div>
+      <div>
+        <strong>Un criterio con el que quiero trabajar desde el primer día.</strong>
+        <p>Todo lo que publiquemos va a hablar de <em>evaluar</em>, <em>acompañar</em> y <em>encontrar la
+        causa</em> — nunca de curar ni de garantizar resultados. Los testimonios se publican completos,
+        tal como los contó el paciente y con su permiso, sin retoques que prometan lo que no se puede
+        prometer. No es solo una cuestión legal y de las normas de las plataformas de publicidad: es que
+        en salud, la confianza es el activo, y una promesa exagerada la destruye más rápido de lo que
+        cualquier campaña la construye. Vos ponés el criterio médico; yo me encargo de que la
+        comunicación lo respete.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="inner">
+      <div>KeyVox · Propuesta de trabajo preparada para la Dra. Lilian — NutriSlim</div>
+      <div>Documento de trabajo · sin valores comerciales</div>
+    </div>
+  </footer>
+</div>
+
+</body>
+</html>
