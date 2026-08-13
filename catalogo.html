@@ -1,0 +1,469 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="Catálogo KeyVox: servicios de IA, automatización y marketing por separado y en paquetes, con precios de referencia para Paraguay." />
+
+  <link rel="icon" type="image/png" href="keyvoxlogo.png">
+  <link rel="apple-touch-icon" href="keyvoxlogo.png">
+
+  <title>KeyVox | Catálogo de Servicios y Precios</title>
+  <link rel="stylesheet" href="styles.css">
+
+  <style>
+    /* Estilos propios de esta página (catálogo). El resto viene de styles.css */
+
+    .note-box{
+      display:flex; gap:14px; align-items:flex-start;
+      border-radius: var(--radius); border:1px solid rgba(245,158,11,.32);
+      background: radial-gradient(500px 200px at 10% 0%, rgba(245,158,11,.10), transparent 65%), rgba(255,255,255,.03);
+      padding:16px 18px; margin:0 auto 8px; max-width:var(--max);
+    }
+    .note-box .icon{ background: rgba(245,158,11,.14); border-color: rgba(245,158,11,.3); flex:0 0 auto; margin-bottom:0; }
+    .note-box strong{ color:#fcd34d; }
+    .note-box p{ margin:4px 0 0; color: rgba(233,232,255,.78); font-size:13.4px; line-height:1.6; }
+
+    /* Precio de servicio suelto */
+    .svc-card{ display:flex; flex-direction:column; }
+    .svc-price{ margin-top:auto; padding-top:14px; border-top:1px solid var(--border, rgba(255,255,255,.08)); }
+    .svc-price .row{ display:flex; justify-content:space-between; align-items:baseline; gap:8px; font-size:13.5px; color:rgba(233,232,255,.7); margin-top:4px; }
+    .svc-price .gs{ font-weight:800; font-size:15.5px; color:#fff; font-variant-numeric: tabular-nums; }
+    .svc-price .usd{ font-size:12px; color: rgba(233,232,255,.5); }
+
+    /* Paquetes */
+    .pkg-card{ position:relative; }
+    .pkg-card .amount{ font-size:26px; font-weight:800; letter-spacing:-.5px; margin:10px 0 2px; }
+    .pkg-card .amount .usd{ font-size:.5em; color: rgba(233,232,255,.55); font-weight:700; margin-left:6px; }
+    .pkg-card .per{ font-size:12.5px; color: rgba(233,232,255,.6); display:block; margin-bottom:14px; }
+
+    .save-banner{
+      display:flex; align-items:center; gap:10px; justify-content:center;
+      background: rgba(52,211,153,.1); border:1px solid rgba(52,211,153,.3);
+      border-radius:14px; padding:12px 16px; font-size:13.5px; color:#a7f3d0; margin-top:14px;
+      text-align:center;
+    }
+
+    /* Costos operativos (transparencia) */
+    .op-wrap{ overflow-x:auto; border-radius:var(--radius); border:1px solid rgba(255,255,255,.10); }
+    table.op-table{ width:100%; border-collapse:collapse; font-size:13px; min-width:560px; }
+    table.op-table th, table.op-table td{ padding:12px 14px; text-align:left; border-bottom:1px solid rgba(255,255,255,.08); }
+    table.op-table thead th{ background: rgba(255,255,255,.04); font-size:11.5px; text-transform:uppercase; letter-spacing:.4px; color: rgba(233,232,255,.6); }
+    table.op-table td{ color: rgba(233,232,255,.78); }
+    table.op-table tr:last-child td{ border-bottom:none; }
+
+    @media (max-width: 980px){
+      .grid-3{ grid-template-columns:1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="wrap">
+    <div class="float f1"></div>
+    <div class="float f2"></div>
+    <div class="float f3"></div>
+
+    <!-- NAV -->
+    <nav class="nav" aria-label="Navegación principal">
+      <div class="nav-inner">
+        <div class="brand">
+          <a href="index.html" style="display:flex;align-items:center;gap:10px;">
+            <img src="keyvoxlogo.png" alt="KeyVox logo" style="height:70px;width:auto;">
+          </a>
+        </div>
+
+        <div class="nav-links">
+          <a href="#separados">Servicios sueltos</a>
+          <a href="#paquetes">Paquetes</a>
+          <a href="#transparencia">Costos operativos</a>
+          <a href="index.html">Inicio KeyVox</a>
+        </div>
+
+        <div style="display:flex; gap:10px;">
+          <a class="btn btn-primary" href="#contacto">Cotizar por WhatsApp</a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- HERO -->
+    <header class="hero" id="top">
+      <div class="hero-copy">
+        <div class="badge">
+          <span class="dot"></span>
+          Catálogo comercial · para mostrar a clientes
+        </div>
+
+        <h1>Agentes de IA que <span class="grad">venden por vos</span> en WhatsApp y redes</h1>
+
+        <p class="lead">
+          Este es el catálogo de KeyVox: cada servicio por separado y en paquetes, con precios de
+          referencia para Asunción. El corazón del catálogo es el agente de IA que atiende, responde
+          y cierra ventas por WhatsApp, Instagram y Facebook — el resto de los servicios lo potencian.
+        </p>
+
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#paquetes">Ver paquetes</a>
+          <a class="btn btn-ghost" href="#separados">Ver servicios sueltos</a>
+        </div>
+
+        <div class="hero-meta">
+          <span class="pill">🤖 Agente de IA vendedor 24/7</span>
+          <span class="pill">💬 WhatsApp + Instagram + Facebook</span>
+          <span class="pill">💰 Precios en guaraníes, con referencia en USD</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- NOTA PARA VENDEDORES -->
+    <div style="max-width:var(--max); margin:0 auto; padding:0 18px 8px;">
+      <div class="note-box">
+        <div class="icon">💡</div>
+        <div>
+          <strong>Nota para el equipo comercial.</strong>
+          <p>Los precios de esta página son de referencia, para tener un número concreto para mostrar en
+          la primera conversación. El presupuesto final se cierra según el alcance real de cada cliente
+          (rubro, volumen de conversaciones, cantidad de canales). Nunca cotizar por debajo de estos pisos
+          sin confirmar conmigo.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- SERVICIOS POR SEPARADO -->
+    <section id="separados">
+      <div class="section-title">
+        <div>
+          <span class="eyebrow">A la carta</span>
+          <h2>Servicios por separado</h2>
+          <p>Cada pieza se puede contratar sola. La mayoría de los clientes arranca con el agente de IA
+          para WhatsApp y va sumando el resto con el tiempo.</p>
+        </div>
+      </div>
+
+      <div class="grid grid-3">
+        <article class="card svc-card reco">
+          <div class="price-ribbon">★ El más pedido</div>
+          <div class="icon">🤖</div>
+          <h3>Agente de IA para WhatsApp</h3>
+          <p>Vende y agenda 24/7: entrenado con tu guion de venta y la información de tu negocio, hace
+          seguimiento automático (recordatorios, reprogramación) y deriva al equipo humano cuando hace falta.</p>
+          <div class="svc-price">
+            <div class="row"><span>Puesta en marcha</span><span><span class="gs">Gs. 3.500.000 – 4.500.000</span><br><span class="usd">≈ USD 570 – 730</span></span></div>
+            <div class="row"><span>Mensualidad</span><span><span class="gs">Gs. 700.000 – 900.000</span><br><span class="usd">≈ USD 115 – 145</span></span></div>
+          </div>
+        </article>
+
+        <article class="card svc-card">
+          <div class="icon">📱</div>
+          <h3>Agente en Instagram y Facebook</h3>
+          <p>Se conecta el mismo agente a Messenger e Instagram Direct — un solo cerebro respondiendo en
+          todos los canales, sin duplicar trabajo ni contratar a otra persona.</p>
+          <div class="svc-price">
+            <div class="row"><span>Puesta en marcha</span><span><span class="gs">Gs. 1.100.000 – 1.500.000</span><br><span class="usd">≈ USD 179 – 244</span></span></div>
+          </div>
+        </article>
+
+        <article class="card svc-card">
+          <div class="icon">🗂️</div>
+          <h3>CRM — orden de leads y clientes</h3>
+          <p>Centraliza cada conversación, con quién, en qué estado y por qué canal entró. Es la memoria
+          que usa el agente para recordar a cada cliente entre mensajes y entre días.</p>
+          <div class="svc-price">
+            <div class="row"><span>Puesta en marcha</span><span><span class="gs">Gs. 1.500.000 – 2.000.000</span><br><span class="usd">≈ USD 244 – 325</span></span></div>
+          </div>
+        </article>
+
+        <article class="card svc-card">
+          <div class="icon">🌐</div>
+          <h3>Web o landing de conversión</h3>
+          <p>Sitio profesional enfocado en captar contactos y llevarlos directo al WhatsApp del negocio,
+          no solo "quedar bien" — SEO local incluido.</p>
+          <div class="svc-price">
+            <div class="row"><span>Desde</span><span><span class="gs">Gs. 3.200.000</span><br><span class="usd">≈ USD 520</span></span></div>
+          </div>
+        </article>
+
+        <article class="card svc-card">
+          <div class="icon">🎬</div>
+          <h3>Embudo de ventas — creativos</h3>
+          <p>6 a 10 piezas para Instagram, Facebook y TikTok, con copy pensado para llevar el tráfico
+          directo al agente de WhatsApp y calibrarlo con conversaciones reales.</p>
+          <div class="svc-price">
+            <div class="row"><span>Puesta en marcha</span><span><span class="gs">Gs. 1.800.000 – 2.000.000</span><br><span class="usd">≈ USD 293 – 325</span></span></div>
+          </div>
+        </article>
+
+        <article class="card svc-card">
+          <div class="icon">⚙️</div>
+          <h3>Setup técnico</h3>
+          <p>Alta y verificación de WhatsApp Business API, correo institucional y despliegue del servidor
+          del agente conectado a la base de datos.</p>
+          <div class="svc-price">
+            <div class="row"><span>Puesta en marcha</span><span><span class="gs">Gs. 700.000 – 800.000</span><br><span class="usd">≈ USD 113 – 130</span></span></div>
+          </div>
+        </article>
+
+        <article class="card svc-card">
+          <div class="icon">🔁</div>
+          <h3>Automatización de seguimiento</h3>
+          <p>Recordatorios, reactivación de clientes fríos y avisos automáticos disparados desde el CRM,
+          sin que nadie tenga que acordarse de escribir.</p>
+          <div class="svc-price">
+            <div class="row"><span>Puesta en marcha</span><span><span class="gs">Gs. 800.000 – 1.200.000</span><br><span class="usd">≈ USD 130 – 195</span></span></div>
+          </div>
+        </article>
+
+        <article class="card svc-card">
+          <div class="icon">☎️</div>
+          <h3>Agente de voz con IA</h3>
+          <p>Atiende llamadas, toma datos y confirma turnos sin intervención humana. Precio final según
+          volumen de llamadas mensuales.</p>
+          <div class="svc-price">
+            <div class="row"><span>Desde</span><span><span class="gs">Gs. 2.500.000</span><br><span class="usd">≈ USD 405</span></span></div>
+            <div class="row"><span>Mensualidad</span><span><span class="gs">A cotizar</span></span></div>
+          </div>
+        </article>
+
+        <article class="card svc-card">
+          <div class="icon">📊</div>
+          <h3>Dashboards y análisis con IA</h3>
+          <p>Convertimos las conversaciones y ventas del agente en reportes claros: qué funciona, de dónde
+          vienen los clientes y qué se está perdiendo.</p>
+          <div class="svc-price">
+            <div class="row"><span>Desde</span><span><span class="gs">Gs. 1.500.000</span><br><span class="usd">≈ USD 244</span></span></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- PAQUETES -->
+    <section id="paquetes">
+      <div class="section-title">
+        <div>
+          <span class="eyebrow">Conviene más</span>
+          <h2>Paquetes</h2>
+          <p>Los mismos servicios, combinados y con descuento sobre el precio de contratarlos por separado.</p>
+        </div>
+      </div>
+
+      <div class="grid grid-3">
+        <div class="card price pkg-card">
+          <div class="top">
+            <div><b>IA Start</b><br><small>Primer paso, sin agente todavía</small></div>
+            <span class="tag">Inicial</span>
+          </div>
+          <div class="amount">Gs. 4.000.000<span class="usd">≈ USD 650</span></div>
+          <span class="per">pago único</span>
+          <ul class="list">
+            <li><span class="check">✓</span> Diagnóstico de negocio</li>
+            <li><span class="check">✓</span> Web o landing de conversión</li>
+            <li><span class="check">✓</span> WhatsApp Business configurado</li>
+            <li><span class="check">✓</span> Setup técnico completo</li>
+          </ul>
+          <div class="hero-actions" style="margin-top:14px;">
+            <a class="btn btn-primary" href="#contacto" onclick="prefillPlan('IA Start')">Quiero este plan</a>
+          </div>
+        </div>
+
+        <div class="card price pkg-card reco">
+          <div class="price-ribbon">⭐ Más elegido</div>
+          <div class="top">
+            <div><b>IA Business</b><br><small>El agente vendiendo en todos tus canales</small></div>
+            <span class="tag" style="border-color:rgba(52,211,153,.4);color:#a7f3d0;">Recomendado</span>
+          </div>
+          <div class="amount">Gs. 10.000.000<span class="usd">≈ USD 1.625</span></div>
+          <span class="per">implementación + desde Gs. 700.000/mes (≈ USD 115)</span>
+          <ul class="list">
+            <li><span class="check">✓</span> Todo lo de IA Start</li>
+            <li><span class="check">✓</span> Agente de IA propio vendiendo por WhatsApp, Instagram y Facebook</li>
+            <li><span class="check">✓</span> CRM con seguimiento automático</li>
+            <li><span class="check">✓</span> Embudo de ventas: 6 a 10 creativos</li>
+            <li><span class="check">✓</span> Mensualidad cubre mantenimiento, mejoras y soporte</li>
+          </ul>
+          <div class="hero-actions" style="margin-top:14px;">
+            <a class="btn btn-primary" href="#contacto" onclick="prefillPlan('IA Business')">Quiero este plan</a>
+          </div>
+        </div>
+
+        <div class="card price pkg-card">
+          <div class="top">
+            <div><b>IA Enterprise</b><br><small>Sistema avanzado y a medida</small></div>
+            <span class="tag">Premium</span>
+          </div>
+          <div class="amount">A cotizar<span class="usd">desde Gs. 15.000.000</span></div>
+          <span class="per">implementación + mensualidad a medida</span>
+          <ul class="list">
+            <li><span class="check">✓</span> Todo lo de IA Business</li>
+            <li><span class="check">✓</span> Múltiples agentes / canales avanzados (voz + chat)</li>
+            <li><span class="check">✓</span> Automatización multiárea y dashboards a medida</li>
+            <li><span class="check">✓</span> Acompañamiento estratégico continuo</li>
+          </ul>
+          <div class="hero-actions" style="margin-top:14px;">
+            <a class="btn btn-primary" href="#contacto" onclick="prefillPlan('IA Enterprise')">Quiero este plan</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="save-banner">💰 IA Business combina 5 servicios que por separado suman cerca de <strong>Gs. 11.900.000</strong> — en el paquete quedan en <strong>Gs. 10.000.000</strong></div>
+
+      <p class="note" style="margin-top:14px; max-width:70ch;">
+        Los precios de esta página son de referencia para Paraguay, a agosto de 2026. El presupuesto final
+        se cierra según el alcance real del proyecto — rubro del cliente, cantidad de canales y volumen
+        esperado de conversaciones. Financiación disponible en cuotas semanales o mensuales, a coordinar.
+      </p>
+    </section>
+
+    <!-- TRANSPARENCIA -->
+    <section id="transparencia">
+      <div class="section-title">
+        <div>
+          <span class="eyebrow">Transparencia total</span>
+          <h2>Costos operativos mensuales</h2>
+          <p>Esto es lo que cuesta mantener el agente encendido cada mes: lo que se le paga directo a los
+          proveedores (Anthropic, Meta). No es ganancia de KeyVox — se factura aparte de la mensualidad
+          del paquete, a precio de costo.</p>
+        </div>
+      </div>
+      <div class="op-wrap">
+        <table class="op-table">
+          <thead><tr><th>Ítem</th><th>Costo aprox.</th><th>Motivo</th></tr></thead>
+          <tbody>
+            <tr><td>API de IA (Anthropic) — el "cerebro" del agente</td><td>USD 100 – 220 / mes</td><td>Varía según volumen de conversaciones</td></tr>
+            <tr><td>WhatsApp Business API</td><td>USD 30 – 80 / mes</td><td>Mensajes de seguimiento y recordatorios automáticos</td></tr>
+            <tr><td>Hosting + dominio + correo institucional</td><td>USD 250 – 310 / año</td><td>Pago único anual, no se suma a la mensualidad</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="note" style="margin-top:14px; max-width:70ch;">
+        Referencia real de consumo: un negocio con volumen medio de conversaciones ronda los USD 100 –
+        300 por mes en total de costos operativos. Se ajusta al número exacto una vez el agente está en
+        marcha y con datos reales de uso.
+      </p>
+    </section>
+
+    <!-- CONTACTO -->
+    <section id="contacto">
+      <div class="section-title">
+        <div>
+          <h2>¿Armamos tu cotización?</h2>
+          <p>Contame qué necesita el cliente y te paso el número exacto para cerrar.</p>
+        </div>
+      </div>
+
+      <div class="contact">
+        <div class="card">
+          <form class="form" id="leadForm">
+            <div class="grid grid-2">
+              <div>
+                <label for="nombre" class="form-label">Nombre</label>
+                <input id="nombre" name="nombre" placeholder="Tu nombre" required>
+              </div>
+              <div>
+                <label for="empresa" class="form-label">Empresa / cliente</label>
+                <input id="empresa" name="empresa" placeholder="Nombre de la empresa">
+              </div>
+            </div>
+
+            <div class="grid grid-2">
+              <div>
+                <label for="servicio" class="form-label">Interés principal</label>
+                <select id="servicio" name="servicio">
+                  <option value="Agente de IA para WhatsApp">Agente de IA para WhatsApp</option>
+                  <option value="Plan IA Start">Plan IA Start</option>
+                  <option value="Plan IA Business">Plan IA Business</option>
+                  <option value="Plan IA Enterprise">Plan IA Enterprise</option>
+                  <option value="Servicio suelto">Servicio suelto (a definir)</option>
+                </select>
+              </div>
+              <div>
+                <label for="telefono" class="form-label">WhatsApp</label>
+                <input id="telefono" name="telefono" placeholder="+595 ...">
+              </div>
+            </div>
+
+            <div>
+              <label for="mensaje" class="form-label">Mensaje</label>
+              <textarea id="mensaje" name="mensaje" placeholder="Contame de qué rubro es el cliente y qué necesita"></textarea>
+            </div>
+
+            <button class="btn btn-primary" type="submit">Enviar por WhatsApp</button>
+
+            <p class="note">
+              Este formulario redirige a WhatsApp con tus datos precargados.
+            </p>
+          </form>
+        </div>
+
+        <div class="card">
+          <div class="icon">📋</div>
+          <h3>Cómo usar este catálogo</h3>
+          <p>Mostralo desde el celular en la reunión con el cliente. Empezá siempre por el agente de IA
+          para WhatsApp — es la puerta de entrada más fácil de vender y el que más rápido se paga solo.</p>
+
+          <ul class="list" style="margin-top:14px;">
+            <li><span class="check">✓</span> Precios de referencia — el cierre final es a medida</li>
+            <li><span class="check">✓</span> Se puede armar un combo fuera de estos paquetes</li>
+            <li><span class="check">✓</span> Ante dudas de alcance, confirmar antes de prometer</li>
+          </ul>
+
+          <div class="hero-actions" style="margin-top:14px;">
+            <a class="btn btn-primary" id="waLink" href="https://wa.me/595971853291" target="_blank" rel="noopener">
+              Escribir por WhatsApp
+            </a>
+            <a class="btn btn-ghost" href="index.html">Volver a Inicio KeyVox</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="inner">
+        <div>© <span id="year"></span> KeyVox — Catálogo de Servicios y Precios</div>
+        <div class="nav-links">
+          <a href="#separados">Servicios sueltos</a>
+          <a href="#paquetes">Paquetes</a>
+          <a href="index.html">Inicio</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    const WHATSAPP_NUMBER = "595971853291";
+
+    function buildWhatsAppLink(message) {
+      const base = "https://wa.me/" + WHATSAPP_NUMBER;
+      const text = encodeURIComponent(message || "Hola KeyVox, quiero una cotización del catálogo.");
+      return base + "?text=" + text;
+    }
+
+    function prefillPlan(planName) {
+      const sel = document.getElementById("servicio");
+      const msg = document.getElementById("mensaje");
+      if (sel) sel.value = "Plan " + planName;
+      if (msg) msg.value = `Hola KeyVox, quiero cotizar el plan ${planName} para un cliente. Rubro del cliente: `;
+      document.getElementById("contacto").scrollIntoView({ behavior: "smooth" });
+    }
+
+    const wa = document.getElementById("waLink");
+    if (wa) wa.href = buildWhatsAppLink("Hola KeyVox, estoy usando el catálogo con un cliente y necesito una cotización.");
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    document.getElementById("leadForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+      const nombre = document.getElementById("nombre").value || "";
+      const empresa = document.getElementById("empresa").value || "";
+      const servicio = document.getElementById("servicio").value || "";
+      const tel = document.getElementById("telefono").value || "";
+      const mensaje = document.getElementById("mensaje").value || "";
+      const full = `Hola KeyVox, soy ${nombre}${empresa ? " (cliente: " + empresa + ")" : ""}. ` +
+                   `Me interesa: ${servicio}. ` +
+                   `${tel ? "Mi WhatsApp es: " + tel + ". " : ""}` +
+                   `${mensaje}`;
+      window.open(buildWhatsAppLink(full), "_blank");
+    });
+  </script>
+</body>
+</html>

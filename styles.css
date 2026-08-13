@@ -136,6 +136,51 @@ a{
   background: rgba(255,255,255,.03);
 }
 
+.btn-accent{
+  border:1px solid rgba(34,211,238,.4);
+  background: linear-gradient(135deg, rgba(52,211,153,.88), rgba(34,211,238,.88));
+  box-shadow: 0 20px 60px rgba(52,211,153,.20), 0 20px 60px rgba(34,211,238,.16);
+  animation: accent-breathe 3.2s ease-in-out infinite;
+  will-change: transform, filter;
+}
+
+.btn-accent:hover{
+  background: linear-gradient(135deg, rgba(52,211,153,1), rgba(34,211,238,1));
+}
+
+@keyframes accent-breathe{
+  0%,100%{
+    transform: scale(1);
+    filter:
+      drop-shadow(0 0 0 rgba(52,211,153,0))
+      drop-shadow(0 0 0 rgba(34,211,238,0));
+  }
+  50%{
+    transform: scale(1.05);
+    filter:
+      drop-shadow(0 0 14px rgba(52,211,153,.75))
+      drop-shadow(0 0 26px rgba(34,211,238,.55));
+  }
+}
+
+@media (prefers-reduced-motion: reduce){
+  .btn-accent{ animation:none; }
+}
+
+/* Grupo de botones de acción del nav — se envuelve en pantallas chicas en vez de desbordar */
+.nav-cta{
+  display:flex;
+  gap:10px;
+  align-items:center;
+  flex-wrap:wrap;
+  justify-content:flex-end;
+  flex:0 0 auto;
+}
+
+@media (max-width: 560px){
+  .nav-cta .btn{ padding:10px 12px; font-size:13px; }
+}
+
 /* HERO */
 header.hero{
   max-width:var(--max);
@@ -516,6 +561,47 @@ section{
 
 .price b{font-size:22px}
 .price small{color:rgba(233,232,255,.70)}
+
+/* Card destacada — jerarquía visual dentro de una grilla pareja */
+.card.reco{
+  position:relative;
+  z-index:2;
+  border-color: rgba(52,211,153,.5);
+  background:
+    radial-gradient(700px 260px at 20% 0%, rgba(52,211,153,.26), transparent 65%),
+    radial-gradient(700px 260px at 90% 0%, rgba(59,130,246,.20), transparent 65%),
+    rgba(255,255,255,.045);
+  box-shadow: 0 0 0 1px rgba(52,211,153,.28), 0 30px 80px rgba(52,211,153,.20), var(--shadow);
+  transform: scale(1.045);
+}
+
+.card.reco:hover{
+  transform: scale(1.045) translateY(-2px);
+}
+
+.price-ribbon{
+  position:absolute;
+  top:-14px;
+  left:50%;
+  transform:translateX(-50%);
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  background: linear-gradient(135deg, rgba(52,211,153,.95), rgba(34,211,238,.9));
+  color:#04241a;
+  font-weight:800;
+  font-size:12px;
+  letter-spacing:.2px;
+  padding:7px 16px;
+  border-radius:999px;
+  box-shadow: 0 10px 26px rgba(52,211,153,.4);
+  white-space:nowrap;
+}
+
+@media (max-width: 980px){
+  .card.reco{ transform:none; }
+  .card.reco:hover{ transform:none; }
+}
 
 .list{
   margin:12px 0 0;
