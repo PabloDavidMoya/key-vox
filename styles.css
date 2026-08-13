@@ -69,6 +69,7 @@ a{
   display:flex;
   align-items:center;
   justify-content:space-between;
+  flex-wrap:wrap;
   padding:14px 18px;
   gap:14px;
 }
@@ -179,6 +180,12 @@ a{
 
 @media (max-width: 560px){
   .nav-cta .btn{ padding:10px 12px; font-size:13px; }
+}
+
+@media (max-width: 480px){
+  .nav-inner{ padding:12px 14px; gap:8px; }
+  .nav-inner .brand img{ height:48px !important; }
+  .nav-cta .btn, .nav-inner > div:last-child .btn{ padding:9px 11px; font-size:12.5px; }
 }
 
 /* HERO */
