@@ -347,7 +347,8 @@ h1{
   aspect-ratio: 16 / 10;
 }
 
-.hero-video-frame video{
+.hero-video-frame video,
+.hero-video-frame img{
   width:100%;
   height:100%;
   object-fit:cover;
@@ -913,4 +914,27 @@ footer .inner{
   border-style:dashed;
   border-color: rgba(168,85,247,.28);
   color: rgba(233,232,255,.42);
+}
+
+/* ===== Morphicons ===== */
+/* El color de trazo se pasa por el atributo `color` del web component,
+   porque <morph-icon> renderiza su SVG en shadow DOM y `.icon svg` no lo alcanza. */
+.icon morph-icon{
+  display:block;
+  line-height:0;
+}
+
+.badge-morph{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:16px;
+  height:16px;
+  margin-right:2px;
+  flex:0 0 auto;
+}
+
+.badge-morph morph-icon{
+  display:block;
+  line-height:0;
 }
