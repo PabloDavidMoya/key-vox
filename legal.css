@@ -1,0 +1,42 @@
+/* Estilo de las páginas legales de KeyVox (privacidad, términos, eliminar datos). */
+:root { --marino:#002743; --amarillo:#FFC720; --texto:#333333; --suave:#5a5a5a; --borde:#e3e8ee; }
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  color: var(--texto);
+  background: #ffffff;
+  font: 16px/1.7 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+.cab {
+  background: var(--marino);
+  border-bottom: 4px solid var(--amarillo);
+}
+.cab-inner {
+  max-width: 46rem;
+  margin: 0 auto;
+  padding: 0.9rem 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.cab img { height: 54px; width: auto; display: block; }
+.cab a.volver { color: #ffffff; text-decoration: none; font-size: 0.92rem; opacity: 0.9; }
+.cab a.volver:hover { text-decoration: underline; }
+main { max-width: 46rem; margin: 0 auto; padding: 2.25rem 1.25rem 3.5rem; }
+h1 { color: var(--marino); font-size: 1.85rem; line-height: 1.25; margin: 0 0 0.25rem; }
+h2 { color: var(--marino); font-size: 1.2rem; margin: 2.2rem 0 0.4rem; }
+.fecha { color: var(--suave); font-size: 0.92rem; margin: 0 0 1.5rem; }
+ul, ol { padding-left: 1.25rem; }
+li { margin-bottom: 0.45rem; }
+a { color: var(--marino); }
+.caja {
+  background: #fffbea;
+  border: 1px solid var(--amarillo);
+  border-radius: 10px;
+  padding: 0.9rem 1.1rem;
+  margin: 1.25rem 0;
+}
+.nav-legal { margin-top: 2.5rem; padding-top: 1rem; border-top: 1px solid var(--borde); font-size: 0.92rem; }
+.nav-legal a { margin-right: 1.1rem; }
+footer { color: var(--suave); font-size: 0.85rem; text-align: center; padding: 1.5rem 1rem 2.5rem; }
